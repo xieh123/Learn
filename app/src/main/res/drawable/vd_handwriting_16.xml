@@ -1,0 +1,76 @@
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="200dp"
+    android:viewportHeight="200"
+    android:viewportWidth="360">
+
+    <!-- Here's the trick, we place four copies of the path for the number one on top of each other.
+         We then set different trim values to show only a quarter of each path. We can then animate
+         the trimPathOffset property to make the shown segment describe the whole path. -->
+    <path
+        android:name="one_1"
+        android:pathData="@string/path_one_google_io"
+        android:strokeColor="@color/cyan_a100"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0.25"
+        android:trimPathStart="0"/>
+
+    <path
+        android:name="one_2"
+        android:pathData="@string/path_one_google_io"
+        android:strokeColor="@color/pink_500"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0.5"
+        android:trimPathStart="0.25"/>
+
+    <path
+        android:name="one_3"
+        android:pathData="@string/path_one_google_io"
+        android:strokeColor="@color/indigo_400"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0.75"
+        android:trimPathStart="0.5"/>
+
+    <path
+        android:name="one_4"
+        android:pathData="@string/path_one_google_io"
+        android:strokeColor="@color/cyan_300"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0"
+        android:trimPathStart="0.75"/>
+
+    <!-- we do the same for the number six. -->
+    <path
+        android:name="six_1"
+        android:pathData="@string/path_funky_six"
+        android:strokeColor="@color/cyan_a100"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0.25"
+        android:trimPathStart="0"/>
+
+    <path
+        android:name="six_2"
+        android:pathData="@string/path_funky_six"
+        android:strokeColor="@color/pink_500"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0.5"
+        android:trimPathStart="0.25"/>
+
+    <path
+        android:name="six_3"
+        android:pathData="@string/path_funky_six"
+        android:strokeColor="@color/indigo_400"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0.75"
+        android:trimPathStart="0.5"/>
+
+    <path
+        android:name="six_4"
+        android:pathData="@string/path_funky_six"
+        android:strokeColor="@color/cyan_300"
+        android:strokeWidth="@dimen/hashtag_stroke_width"
+        android:trimPathEnd="0"
+        android:trimPathStart="0.75"/>
+
+</vector>

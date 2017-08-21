@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"/>
+
+        <!--app:use_gradient="true"-->
+
+        <LinearLayout
+            android:id="@+id/container_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/image_icon"
+            android:layout_toRightOf="@+id/image_icon"
+            android:orientation="vertical">
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:height_weight="0.8"
+                app:use_gradient="true"
+                app:width_weight="0.6"/>
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                app:height_weight="0.8"
+                app:width_weight="1.0"/>
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/txt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="8dp"
+                android:textSize="16sp"
+                app:height_weight="0.8"
+                app:width_weight="0.4"/>
+
+            <com.elyeproj.loaderviewlibrary.LoaderTextView
+                android:id="@+id/txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="8dp"
+                android:textSize="16sp"
+                app:height_weight="0.8"
+                app:width_weight="0.9"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:onClick="resetLoader"
+        android:text="重置"/>
+
+    <com.example.myapplication.widget.ShimmerLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/shimmer_avatar_1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="11dp"
+                android:background="@drawable/welcome_thirdly"/>
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="19dp"
+                android:layout_alignTop="@+id/shimmer_avatar_1"
+                android:layout_toRightOf="@+id/shimmer_avatar_1"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_description_1"
+                android:layout_width="39dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/shimmer_avatar_1"
+                android:layout_toRightOf="@+id/shimmer_avatar_1"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:layout_width="101dp"
+                android:layout_height="17dp"
+                android:layout_alignBottom="@+id/shimmer_description_1"
+                android:layout_alignParentRight="true"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_divider_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/shimmer_avatar_1"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="11dp"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_avatar_2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/shimmer_divider_1"
+                android:layout_marginRight="11dp"
+                android:background="@drawable/welcome_thirdly"/>
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="19dp"
+                android:layout_alignTop="@+id/shimmer_avatar_2"
+                android:layout_toRightOf="@+id/shimmer_avatar_2"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_description_2"
+                android:layout_width="39dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/shimmer_avatar_2"
+                android:layout_toRightOf="@+id/shimmer_avatar_2"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:layout_width="101dp"
+                android:layout_height="17dp"
+                android:layout_alignBottom="@+id/shimmer_description_2"
+                android:layout_alignParentRight="true"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_divider_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/shimmer_avatar_2"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="11dp"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_avatar_3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/shimmer_divider_2"
+                android:layout_marginRight="11dp"
+                android:background="@drawable/welcome_thirdly"/>
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="19dp"
+                android:layout_alignTop="@+id/shimmer_avatar_3"
+                android:layout_toRightOf="@+id/shimmer_avatar_3"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_description_3"
+                android:layout_width="39dp"
+                android:layout_height="13dp"
+                android:layout_alignBottom="@+id/shimmer_avatar_3"
+                android:layout_toRightOf="@+id/shimmer_avatar_3"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:layout_width="101dp"
+                android:layout_height="17dp"
+                android:layout_alignBottom="@+id/shimmer_description_3"
+                android:layout_alignParentRight="true"
+                android:background="#b1b1b1"/>
+
+            <View
+                android:id="@+id/shimmer_divider_3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/shimmer_avatar_3"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="11dp"
+                android:background="#b1b1b1"/>
+        </RelativeLayout>
+    </com.example.myapplication.widget.ShimmerLayout>
+
+</LinearLayout>

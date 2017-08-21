@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="color_text_normal">#FF98D4E2</color>
+
+    <color name="color_bg_11">#FF98D4E2</color>
+    <color name="color_bg_22">#FFCD0000</color>
+    <color name="color_bg_33">#FF97C8DF</color>
+
+    <color name="red_e73a3d">#e73a3d</color>
+
+    <color name="color_01">#000000</color>
+    <color name="color_02">#CD0000</color>
+    <color name="color_03">#0041CD</color>
+    <color name="color_04">#046910</color>
+    <color name="color_05">#FFFFFF</color>
+
+    <color name="gray">#444440</color>
+
+    <color name="color_white">#FFFFFF</color>
+
+
+    <color name="transparent">@android:color/transparent</color>
+
+
+    <color name="color3A3A3A">#3A3A3A</color>
+    <color name="color3F3F3F">#3F3F3F</color>
+    <color name="color8A9599">#8A9599</color>
+    <color name="color868686">#868686</color>
+
+    <color name="text_light_color">#FFEC5252</color>
+
+    <color name="text_select_color">#FFEC5252</color>
+    <color name="text_normal_color">#FF5A5A5A</color>
+
+    <color name="shadow">#CC222222</color>
+
+
+    <color name="black">#000000</color>
+    <color name="red">#ffcc0000</color>
+    <color name="green">#2fea00</color>
+    <color name="orange">#fe7f1f</color>
+    <color name="blue">#0990f4</color>
+    <color name="purple">#b702d8</color>
+    <color name="yellow">#ffe300</color>
+
+
+    <color name="color_red">#FF5722</color>
+    <color name="color_orange">#FF9800</color>
+    <color name="color_yellow">#FFC107</color>
+    <color name="color_green">#3FB830</color>
+    <color name="color_blue">#00BAED</color>
+
+
+
+    <color name="shimmer_color">#a2878787</color>
+
+
+</resources>

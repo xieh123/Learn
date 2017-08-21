@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_toys_black_48dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/welcome_thirdly"
+            android:tint="#A0000000"
+            android:tintMode="src_over" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_toys_black_48dp"
+            android:tint="#A0000000"
+            android:tintMode="src_in" />
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_toys_black_48dp"
+            android:tint="#A0000000"
+            android:tintMode="multiply" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.myapplication.widget.StateButton
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:background="#CD0000"
+            app:normalStrokeColor="#000000"
+            app:normalStrokeWidth="5dp"
+            app:radius="10dp"
+            app:strokeDashGap="10dp"
+            app:strokeDashWidth="5dp" />
+
+        <com.example.myapplication.widget.StateButton
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:background="#CD0000"
+            app:normalStrokeColor="#000000"
+            app:normalStrokeWidth="5dp"
+            app:radius="10dp" />
+    </LinearLayout>
+
+    <!--
+
+       //设置圆角度
+       app:radius="5dp"
+
+       //设置左右为半圆， 不用计算radius
+       app:round="true"
+
+       //设置背景切换动画时长
+       app:animationDuration="200"
+
+       //设置dash
+       app:strokeDashGap="2dp"
+
+       //设置dash width
+       app:strokeDashWidth="5dp"
+
+       //设置正常显示的边框宽度
+       app:normalStrokeWidth="2dp"
+
+       //设置按下时显示的边框宽度
+       app:pressedStrokeWidth="2dp"
+
+       //设置不可用时（enable = false）显示的边框宽度
+       app:unableStrokeWidth="2dp"
+
+       //设置正常显示的边框颜色
+       app:normalStrokeColor="@android:color/white"
+
+       //设置按下时显示的边框颜色
+       app:pressedStrokeColor="@android:color/white"
+
+       //设置不可用时（enable = false）显示的边框颜色
+       app:unableStrokeColor="@android:color/white"
+
+       //设置正常显示的文字颜色
+       app:normalTextColor="@android:color/white"
+
+       //设置按下状态显示的文字颜色
+       app:pressedTextColor="@android:color/white"
+
+       //设置不可用时（enable = false）显示的文字颜色
+       app:unableTextColor="@android:color/white"
+
+       //设置正常显示的背景颜色
+       app:normalBackgroundColor="@color/colorPrimaryDark"
+
+       //设置按下状态显示的背景颜色
+       app:pressedBackgroundColor="@color/colorPrimaryDark"
+
+       //设置不可用时（enable = false）背景颜色
+       app:unableBackgroundColor="@color/colorPrimaryDark"
+
+     -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="这段话只在预览时能看到,运行以后就看不到了" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

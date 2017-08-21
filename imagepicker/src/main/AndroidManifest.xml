@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xieh.imagepicker">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".SelectImageActivity" />
+        <activity android:name=".ImageGalleryActivity" />
+        <activity android:name=".crop.CropActivity" />
+
+    </application>
+
+</manifest>

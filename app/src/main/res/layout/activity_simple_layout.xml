@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/xpk"
+        style="@style/txtStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="onVideo"
+        android:text="打开视频编辑(方式一)相册选择" />
+
+    <Button
+        android:id="@+id/xpkedit"
+        style="@style/txtStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="onVideo"
+        android:text="打开视频编辑(方式二)" />
+
+    <Button
+        android:id="@+id/xpkrec"
+        style="@style/txtStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="onVideo"
+        android:text="录制并编辑" />
+
+    <Button
+        android:id="@+id/xpkrec_back"
+        style="@style/txtStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="onVideo"
+        android:text="简单录制" />
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/btnCoreSample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="onVideo"
+            android:text="xpkCoreSample" />
+
+        <CheckBox
+            android:id="@+id/cbImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用图片" />
+    </LinearLayout>
+
+</LinearLayout>

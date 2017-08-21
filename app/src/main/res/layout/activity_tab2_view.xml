@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="355dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#CD0000"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="#FA000000"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/wave_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:src="@drawable/wave" />
+
+        <ImageView
+            android:id="@+id/light_beam_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/light_beam" />
+
+    </FrameLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/edittext_bg"
+        android:padding="5dp"
+        android:text="编辑框的背景" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="transparentActivity"
+        android:text="打开透明背景的 activity"
+        android:textAllCaps="false" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toWeChatScanDirect"
+        android:text="打开微信扫一扫界面"
+        android:textAllCaps="false" />
+
+    <com.example.myapplication.widget.StateTextView
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:cornerRadius="10dp"
+        app:normalBackgroundColor="#CD0000"
+        app:strokeColor="#000000"
+        app:strokeWidth="5dp" />
+
+
+</LinearLayout>

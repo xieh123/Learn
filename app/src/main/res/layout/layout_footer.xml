@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ViewStub
+        android:id="@+id/footer_loading_viewStub"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout="@layout/layout_footer_loading" />
+
+    <ViewStub
+        android:id="@+id/footer_end_viewStub"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout="@layout/layout_footer_end" />
+
+    <ViewStub
+        android:id="@+id/footer_error_viewStub"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout="@layout/layout_footer_error" />
+
+</LinearLayout>

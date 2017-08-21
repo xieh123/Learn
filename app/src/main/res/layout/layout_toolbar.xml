@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    android:fitsSystemWindows="true"
+    app:layout_collapseMode="pin"
+    app:navigationIcon="@drawable/ic_back"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:subtitleTextColor="@color/color_text_normal"
+    app:titleTextColor="@color/color_text_normal">
+
+    <TextView
+        android:id="@+id/toolbar_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/toolbar_text_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:padding="8dp" />
+
+</android.support.v7.widget.Toolbar>
+
+
+    <!--
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_while"
+    android:fitsSystemWindows="true"
+    android:elevation="2dp">
+
+    <TextView
+        android:id="@+id/toolbar_back_tv"
+        style="@style/textView_14sp"
+        android:drawableLeft="@drawable/ic_back_bg"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        android:text="@string/back" />
+
+    <TextView
+        android:id="@+id/toolbar_title_tv"
+        style="@style/textView_16sp"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/toolbar_text_tv"
+        style="@style/textView_16sp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:padding="8dp" />
+
+</RelativeLayout>
+    -->
