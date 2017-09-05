@@ -16,7 +16,7 @@ public class NiceDialogFragment extends BaseDialogFragment {
     }
 
     @Override
-    public int intLayoutId() {
+    public int getLayoutId() {
         return layoutId;
     }
 

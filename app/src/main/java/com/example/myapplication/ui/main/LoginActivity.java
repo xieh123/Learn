@@ -11,19 +11,17 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.utils.SnackbarUtils;
-import com.example.myapplication.widget.GuideView;
+import com.example.myapplication.widget.GuideLayout;
 import com.example.myapplication.widget.RotatableButton;
 import com.example.myapplication.widget.RotatableImageButton;
+import com.zhl.userguideview.UserGuideView;
 
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -54,17 +52,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         initView();
 
         initGuideView();
+
+        initGuideView11();
     }
 
     public void initView() {
 
         mRootView = findViewById(R.id.login_root_view);
-        mTipView =  findViewById(R.id.login_tip_bt);
+        mTipView = findViewById(R.id.login_tip_bt);
 
         ////////////////////
 
@@ -192,34 +192,56 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         SnackbarUtils.showNetworkErrorSnackBar(this, mRootView, "网络错误 请检查网络", "设置");
     }
 
-    public void initGuideView(){
 
-        // 使用图片
-        final ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.guide_01);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        imageView.setLayoutParams(params);
+    ////////////////////////////////////////
+    ////////////////////////////////////////
+    private GuideLayout mGuide01Layout, mGuide02Layout;
 
-        GuideView guideView = GuideView.Builder
-                .newInstance(this)
-                .setTargetView(mTipView)
-                .setCustomGuideView(imageView)
-                .setDirection(GuideView.Direction.RIGHT_BOTTOM)
-                .setBgColor(ContextCompat.getColor(this, R.color.shadow))
-                // .setRadius(50)          // 设置圆形透明区域半径，默认是targetView的显示矩形的半径
-                // .setOffset(150, 0)     // 设置偏移，一般用于微调GuideView的位置
-                //.showOnce()           // 设置首次显示，设置后，显示一次后，不再显示
-                .setOnclickListener(new GuideView.OnClickCallback() {
-                    @Override
-                    public void onClickedGuideView() {
-//                        guideView.hide();
-//                        guideView01.show();
-                    }
-                })
-                .build();
+    public void initGuideView() {
+        final View mGuide01View = View.inflate(this, R.layout.layout_guide_01, null);
+        mGuide01Layout = new GuideLayout(this);
+        mGuide01Layout.setCustomView(mGuide01View);
+        mGuide01Layout.setOnExitClickListener(R.id.guide_exit_view, new GuideLayout.OnExitClickListener() {
+            @Override
+            public void onClick() {
+                mGuide01Layout.hide();
+                mGuide02Layout.show();
+            }
+        });
 
-        guideView.show();
+        final View mGuide02View = View.inflate(this, R.layout.layout_guide_02, null);
+        mGuide02Layout = new GuideLayout(this);
+        mGuide02Layout.setCustomView(mGuide02View);
+        mGuide02Layout.setOnExitClickListener(R.id.guide_exit_view, new GuideLayout.OnExitClickListener() {
+            @Override
+            public void onClick() {
+                mGuide02Layout.hide();
+            }
+        });
 
+        mGuide01Layout.show();
+    }
+
+    private UserGuideView mGuideView;
+    private Button mGuideBtn, mGuide11Btn;
+
+    public void initGuideView11() {
+        mGuideView = (UserGuideView) findViewById(R.id.guideView);
+        mGuideBtn = (Button) findViewById(R.id.guide_bt);
+        mGuide11Btn = (Button) findViewById(R.id.guide11_bt);
+
+        mGuideBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGuideView.setHighLightView(mGuideBtn);
+            }
+        });
+
+        mGuide11Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGuideView.setHighLightView(mGuide11Btn);
+            }
+        });
     }
 }

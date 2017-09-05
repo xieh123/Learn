@@ -321,7 +321,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         @Override
-        public int intLayoutId() {
+        public int getLayoutId() {
             return R.layout.dialog_confirm;
         }
 

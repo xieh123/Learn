@@ -16,7 +16,7 @@ import com.example.myapplication.ui.main.AnimatorActivity;
 import com.example.myapplication.ui.main.CardViewActivity;
 import com.example.myapplication.ui.main.ChangeThemeActivity;
 import com.example.myapplication.ui.main.CycleRecyclerActivity;
-import com.example.myapplication.ui.main.DownloadActivity;
+import com.example.myapplication.ui.main.DownloadNotificationActivity;
 import com.example.myapplication.ui.main.GalleryActivity;
 import com.example.myapplication.ui.main.GlideActivity;
 import com.example.myapplication.ui.main.ImageActivity;
@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * launchMode等于singleTask ，再次启动此 Activity 时调用该方法
+     *
+     * @param intent
+     */
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -175,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void download(View v) {
-        Intent intent = new Intent(this, DownloadActivity.class);
+        Intent intent = new Intent(this, DownloadNotificationActivity.class);
         startActivity(intent);
     }
 

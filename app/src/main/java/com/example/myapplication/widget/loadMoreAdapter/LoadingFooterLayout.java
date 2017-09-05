@@ -1,4 +1,4 @@
-package com.example.myapplication.widget.loadMore;
+package com.example.myapplication.widget.loadMoreAdapter;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -13,7 +13,7 @@ import com.example.myapplication.R;
 /**
  * Created by xieH on 2017/8/5 0005.
  */
-public class EmptyLayout extends RelativeLayout {
+public class LoadingFooterLayout extends RelativeLayout {
 
     protected State mState = State.Normal;
 
@@ -25,29 +25,24 @@ public class EmptyLayout extends RelativeLayout {
 
     private OnReloadListener onReloadListener;
 
-    public EmptyLayout(Context context) {
+    public LoadingFooterLayout(Context context) {
         this(context, null);
     }
 
-    public EmptyLayout(Context context, AttributeSet attrs) {
+    public LoadingFooterLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public EmptyLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LoadingFooterLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
         init(context);
     }
 
-    private void init(Context context) {
-        inflate(context, R.layout.layout_empty, this);
+    public void init(Context context) {
+        inflate(context, R.layout.layout_footer, this);
         setOnClickListener(null);
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        setLayoutParams(params);
-
-        setState(State.Loading, true);
+        setState(State.Normal, true);
     }
 
     public State getState() {
@@ -72,6 +67,7 @@ public class EmptyLayout extends RelativeLayout {
 
         switch (status) {
             case Normal:
+                setOnClickListener(null);
                 if (mLoadingView != null) {
                     mLoadingView.setVisibility(GONE);
                 }
@@ -86,6 +82,7 @@ public class EmptyLayout extends RelativeLayout {
 
                 break;
             case Loading:
+                setOnClickListener(null);
                 if (mEndView != null) {
                     mEndView.setVisibility(GONE);
                 }
@@ -95,10 +92,10 @@ public class EmptyLayout extends RelativeLayout {
                 }
 
                 if (mLoadingView == null) {
-                    ViewStub viewStub = (ViewStub) findViewById(R.id.empty_loading_viewStub);
+                    ViewStub viewStub = (ViewStub) findViewById(R.id.footer_loading_viewStub);
                     mLoadingView = viewStub.inflate();
 
-                    mLoadingText = (TextView) mLoadingView.findViewById(R.id.empty_loading_tv);
+                    mLoadingText = (TextView) mLoadingView.findViewById(R.id.footer_loading_tv);
                 } else {
                     mLoadingView.setVisibility(VISIBLE);
                 }
@@ -107,6 +104,7 @@ public class EmptyLayout extends RelativeLayout {
 
                 break;
             case End:
+                setOnClickListener(null);
                 if (mLoadingView != null) {
                     mLoadingView.setVisibility(GONE);
                 }
@@ -116,7 +114,7 @@ public class EmptyLayout extends RelativeLayout {
                 }
 
                 if (mEndView == null) {
-                    ViewStub viewStub = (ViewStub) findViewById(R.id.empty_end_viewStub);
+                    ViewStub viewStub = (ViewStub) findViewById(R.id.footer_end_viewStub);
                     mEndView = viewStub.inflate();
                 } else {
                     mEndView.setVisibility(VISIBLE);
@@ -134,7 +132,7 @@ public class EmptyLayout extends RelativeLayout {
                 }
 
                 if (mErrorView == null) {
-                    ViewStub viewStub = (ViewStub) findViewById(R.id.empty_error_viewStub);
+                    ViewStub viewStub = (ViewStub) findViewById(R.id.footer_error_viewStub);
                     mErrorView = viewStub.inflate();
                 } else {
                     mErrorView.setVisibility(VISIBLE);
@@ -151,6 +149,7 @@ public class EmptyLayout extends RelativeLayout {
                         }
                     }
                 });
+
                 break;
             default:
                 break;
@@ -173,7 +172,9 @@ public class EmptyLayout extends RelativeLayout {
         ((ViewGroup) getChildAt(0)).removeView(mLoadingView);  // 先移除旧的View
         ((ViewGroup) getChildAt(0)).addView(loadingView);      // 再添加新的View
         this.mLoadingView = loadingView;
+        this.mLoadingView.setVisibility(GONE);  // 先隐藏
     }
+
 
     /**
      * 设置 加载完成 View

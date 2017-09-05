@@ -23,7 +23,6 @@ public class SnackbarUtils {
     public static final int Warning = 3;
     public static final int Alert = 4;
 
-
     public static int red = 0xfff44336;
     public static int green = 0xff4caf50;
     public static int blue = 0xff2195f3;
@@ -137,6 +136,8 @@ public class SnackbarUtils {
                 break;
             case Alert:
                 setSnackbarColor(snackbar, Color.YELLOW, red);
+                break;
+            default:
                 break;
         }
     }

@@ -67,7 +67,7 @@
         <activity android:name=".ui.main.CardViewActivity"/>
         <activity android:name=".ui.rxbus.RxBusActivity"/>
         <activity android:name=".ui.rxbus.RxBus11Activity"/>
-        <activity android:name=".ui.main.DownloadActivity"/>
+        <activity android:name=".ui.main.DownloadNotificationActivity"/>
         <activity android:name=".ui.main.GalleryActivity"/>
         <activity android:name=".ui.main.LoginActivity"/>
         <activity android:name=".ui.tab1.GotoQQActivity"/>
@@ -137,6 +137,8 @@
         <activity android:name=".ui.tab2.LoadMoreActivity"/>
         <activity android:name=".ui.tab2.LoadMoreNormalActivity"/>
         <activity android:name=".ui.tab2.LoadMoreMultiActivity"/>
+        <activity android:name=".ui.tab2.ExifInfoActivity"/>
+        <activity android:name=".ui.tab2.AdvertisingActivity"/>
 
 
         <service android:name=".download.DownloadService"/>

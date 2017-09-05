@@ -11,10 +11,10 @@ import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMore.BaseAdapter22;
-import com.example.myapplication.widget.loadMore.EmptyLayout;
-import com.example.myapplication.widget.loadMore.LoadingFooterLayout;
-import com.example.myapplication.widget.loadMore.ViewHolder;
+import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter22;
+import com.example.myapplication.widget.loadMoreAdapter.EmptyLayout;
+import com.example.myapplication.widget.loadMoreAdapter.LoadingFooterLayout;
+import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

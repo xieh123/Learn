@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMore.BaseAdapter;
-import com.example.myapplication.widget.loadMore.EmptyLayout;
-import com.example.myapplication.widget.loadMore.LoadingFooterLayout;
-import com.example.myapplication.widget.loadMore.NormalBaseAdapter;
-import com.example.myapplication.widget.loadMore.ViewHolder;
+import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter;
+import com.example.myapplication.widget.loadMoreAdapter.EmptyLayout;
+import com.example.myapplication.widget.loadMoreAdapter.LoadingFooterLayout;
+import com.example.myapplication.widget.loadMoreAdapter.NormalBaseAdapter;
+import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -45,7 +45,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @LayoutRes
     protected int layoutId;
 
-    public abstract int intLayoutId();
+    public abstract int getLayoutId();
 
     public abstract void convertView(ViewHolder holder, BaseDialogFragment dialog);
 
@@ -53,7 +53,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.BaseDialog);
-        layoutId = intLayoutId();
+        layoutId = getLayoutId();
 
         // 恢复保存的数据
         if (savedInstanceState != null) {

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.myapplication.ui.tab2.AdvertisingActivity;
 import com.example.myapplication.ui.tab2.Behavior11Activity;
 import com.example.myapplication.ui.tab2.BehaviorActivity;
 import com.example.myapplication.ui.tab2.CacheActivity;
@@ -13,6 +14,7 @@ import com.example.myapplication.ui.tab2.ContactsActivity;
 import com.example.myapplication.ui.tab2.DashboardActivity;
 import com.example.myapplication.ui.tab2.EditMenuActivity;
 import com.example.myapplication.ui.tab2.EmojiActivity;
+import com.example.myapplication.ui.tab2.ExifInfoActivity;
 import com.example.myapplication.ui.tab2.GaussianActivity;
 import com.example.myapplication.ui.tab2.GuideActivity;
 import com.example.myapplication.ui.tab2.LoadMoreActivity;
@@ -119,6 +121,16 @@ public class Tab2Activity extends AppCompatActivity {
 
     public void loadMore(View v) {
         Intent intent = new Intent(this, LoadMoreActivity.class);
+        startActivity(intent);
+    }
+
+    public void exif(View v) {
+        Intent intent = new Intent(this, ExifInfoActivity.class);
+        startActivity(intent);
+    }
+
+    public void advertising(View v) {
+        Intent intent = new Intent(this, AdvertisingActivity.class);
         startActivity(intent);
     }
 }

@@ -1,11 +1,9 @@
-package com.example.myapplication.widget.loadMore;
+package com.example.myapplication.widget.loadMoreAdapter;
 
 import android.content.Context;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMore.MultiBaseAdapter;
-import com.example.myapplication.widget.loadMore.ViewHolder;
 
 import java.util.List;
 
