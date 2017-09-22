@@ -26,9 +26,7 @@ public class QRCodeActivity extends AppCompatActivity {
         initView();
     }
 
-
     public void initView() {
-
         mQRCodeIv = (ImageView) findViewById(R.id.qr_code_iv);
 
         String url = "https://fir.im/cloudreader";

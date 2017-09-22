@@ -12,7 +12,6 @@
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
@@ -40,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
 
         <activity
             android:name=".MainActivity"
@@ -130,7 +130,7 @@
         <activity android:name=".ui.tab2.TransitionActivity"/>
         <activity android:name=".ui.tab2.View11Activity"/>
         <activity android:name=".ui.tab2.EditMenuActivity"/>
-        <activity android:name=".ui.tab2.GuideActivity"/>
+        <activity android:name=".ui.tab2.PlayVideoActivity"/>
         <activity android:name=".ui.tab2.Behavior11Activity"/>
         <activity android:name=".ui.tab2.EmojiActivity"/>
         <activity android:name=".ui.tab2.DrawableActivity"/>
@@ -139,7 +139,13 @@
         <activity android:name=".ui.tab2.LoadMoreMultiActivity"/>
         <activity android:name=".ui.tab2.ExifInfoActivity"/>
         <activity android:name=".ui.tab2.AdvertisingActivity"/>
+        <activity android:name=".ui.tab2.ChronometerActivity"/>
 
+
+        //////////// 图片选择 ////////////
+        <activity android:name="com.xieh.imagepicker.SelectImageActivity"/>
+        <activity android:name="com.xieh.imagepicker.ImageGalleryActivity"/>
+        <activity android:name="com.xieh.imagepicker.crop.CropActivity"/>
 
         <service android:name=".download.DownloadService"/>
     </application>

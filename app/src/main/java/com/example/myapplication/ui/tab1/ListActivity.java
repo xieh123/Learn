@@ -70,9 +70,9 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        baseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mRecyclerView, mItemList, R.layout.item_recycler) {
+        baseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, mItemList, R.layout.item_recycler) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
 
             }
         };

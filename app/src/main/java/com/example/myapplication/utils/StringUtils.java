@@ -1,5 +1,6 @@
 package com.example.myapplication.utils;
 
+import android.support.annotation.ColorInt;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -21,7 +22,7 @@ public class StringUtils {
      * @param color   变化的色值
      * @return
      */
-    public static SpannableStringBuilder matcherTextStyle(String text, String keyword, int color) {
+    public static SpannableStringBuilder matcherTextStyle(String text, String keyword, @ColorInt int color) {
         SpannableStringBuilder s = new SpannableStringBuilder(text);
         Pattern p = Pattern.compile(keyword);
         Matcher m = p.matcher(s);
@@ -41,7 +42,7 @@ public class StringUtils {
      * @param color    变化的色值
      * @return
      */
-    public static SpannableStringBuilder matcherTextStyle(String text, String[] keywords, int color) {
+    public static SpannableStringBuilder matcherTextStyle(String text, String[] keywords, @ColorInt int color) {
         SpannableStringBuilder s = new SpannableStringBuilder(text);
         for (int i = 0; i < keywords.length; i++) {
             Pattern p = Pattern.compile(keywords[i]);

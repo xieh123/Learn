@@ -1,10 +1,13 @@
 package com.example.myapplication.ui.tab2;
 
+import android.graphics.Matrix;
 import android.media.session.PlaybackState;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Surface;
+import android.view.TextureView;
 import android.widget.Button;
 
 import com.example.myapplication.R;
@@ -12,9 +15,12 @@ import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.LoadControl;
+import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
+import com.google.android.exoplayer2.decoder.DecoderCounters;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.extractor.ExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
@@ -30,11 +36,14 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.google.android.exoplayer2.video.VideoRendererEventListener;
+
+import java.io.File;
 
 /**
  * Created by xieH on 2017/7/13 0013.
  */
-public class GuideActivity extends AppCompatActivity {
+public class PlayVideoActivity extends AppCompatActivity {
 
     private Button button1, button2, button3, button4, button5;
 
@@ -46,7 +55,7 @@ public class GuideActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.activity_play_video);
 
         initView();
 
@@ -69,14 +78,34 @@ public class GuideActivity extends AppCompatActivity {
         LoadControl loadControl = new DefaultLoadControl();
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "yourApplicationName"), bandwidthMeter);
         ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+
         url = "http://mpv.videocc.net/ce0812b122/a/ce0812b122bf0fb49d79ebd97cbe98fa_1.mp4";
-        //test mp4
-        videoSource = new ExtractorMediaSource(Uri.parse(url), dataSourceFactory, extractorsFactory, null, null);
+        Uri uri = Uri.parse(url);
+
+        String filePath = "/storage/sdcard0/Movies/video_1505466485347.mp4";
+//        filePath = "/storage/sdcard0/Movies/girls_generation.mp4";
+
+        File file = new File(filePath);
+        uri = Uri.fromFile(file);
+
+        // test mp4
+        videoSource = new ExtractorMediaSource(uri, dataSourceFactory, extractorsFactory, null, null);
+
+        // Loops the video indefinitely. 循环播放，还可以指定循环次数 LoopingMediaSource(videoSource, 5);
+//        LoopingMediaSource loopingSource = new LoopingMediaSource(videoSource);
+
+//        MediaSource firstSource = new ExtractorMediaSource(firstVideoUri, ...);
+//        MediaSource secondSource = new ExtractorMediaSource(secondVideoUri, ...);
+//        // Plays the first video twice, then the second video.
+//        ConcatenatingMediaSource concatenatedSource = new ConcatenatingMediaSource(firstSource, firstSource, secondSource);
+//        // Loops the sequence indefinitely.
+//        LoopingMediaSource compositeSource = new LoopingMediaSource(concatenatedSource);
+
 
         // 3.创建播放器
         player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
 
-        SimpleExoPlayerView simpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.simpleExoPlayerView);
+        final SimpleExoPlayerView simpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.simpleExoPlayerView);
         // 将player关联到View上
         simpleExoPlayerView.setPlayer(player);
 
@@ -85,6 +114,61 @@ public class GuideActivity extends AppCompatActivity {
 
         player.prepare(videoSource);
         // Prepare the player with the source.
+
+        // 2.5.2版本后才有
+//        player.addVideoListener();
+
+        player.setVideoDebugListener(new VideoRendererEventListener() {
+            @Override
+            public void onVideoEnabled(DecoderCounters counters) {
+
+            }
+
+            @Override
+            public void onVideoDecoderInitialized(String decoderName, long initializedTimestampMs, long initializationDurationMs) {
+
+            }
+
+            @Override
+            public void onVideoInputFormatChanged(Format format) {
+
+            }
+
+            @Override
+            public void onDroppedFrames(int count, long elapsedMs) {
+
+            }
+
+            @Override
+            public void onVideoSizeChanged(int width, int height, int unAppliedRotationDegrees, float pixelWidthHeightRatio) {
+                int viewWidth = simpleExoPlayerView.getVideoSurfaceView().getWidth();
+                int viewHeight = simpleExoPlayerView.getVideoSurfaceView().getHeight();
+
+                float pivotX = viewWidth / 2f;
+                float pivotY = viewHeight / 2f;
+
+                Matrix transform = new Matrix();
+                // 以中心点(pivotX, pivotY) 旋转
+                transform.postRotate(unAppliedRotationDegrees, pivotX, pivotY);
+//                if (unAppliedRotationDegrees == 90 || unAppliedRotationDegrees == 270) {
+//                    float viewAspectRatio = (float) viewHeight / viewWidth;
+//                    // 设置Matrix以(px,py)为轴心进行缩放，sx、sy为X、Y方向上的缩放比例
+//                    transform.postScale(1 / viewAspectRatio, viewAspectRatio, pivotX, pivotY);
+//                }
+                // 调整显示角度
+                ((TextureView) simpleExoPlayerView.getVideoSurfaceView()).setTransform(transform);
+            }
+
+            @Override
+            public void onRenderedFirstFrame(Surface surface) {
+
+            }
+
+            @Override
+            public void onVideoDisabled(DecoderCounters counters) {
+
+            }
+        });
 
 
     }
@@ -158,12 +242,17 @@ public class GuideActivity extends AppCompatActivity {
 
         @Override
         public void onPlayerError(ExoPlaybackException error) {
-            System.out.println("播放: onPlayerError  ");
+            System.out.println("播放: onPlayerError");
         }
 
         @Override
         public void onPositionDiscontinuity() {
-            System.out.println("播放: onPositionDiscontinuity  ");
+            System.out.println("播放: onPositionDiscontinuity");
+        }
+
+        @Override
+        public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
+
         }
     };
 
@@ -180,7 +269,6 @@ public class GuideActivity extends AppCompatActivity {
     private void continuePlay() {
         player.setPlayWhenReady(true);
     }
-
 
     @Override
     protected void onDestroy() {

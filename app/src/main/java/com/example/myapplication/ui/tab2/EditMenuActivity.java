@@ -80,16 +80,16 @@ public class EditMenuActivity extends AppCompatActivity implements ItemTouchCall
     }
 
     private void initAdapter() {
-        mSelectBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mSelectRecyclerView, mSelectList, R.layout.item_recycler_category) {
+        mSelectBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, mSelectList, R.layout.item_recycler_category) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
                 holder.setText(R.id.item_tv, item.getTitle());
             }
         };
 
-        mAllBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mAllRecyclerView, mAllList, R.layout.item_recycler_category) {
+        mAllBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, mAllList, R.layout.item_recycler_category) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
                 holder.setText(R.id.item_tv, item.getTitle());
             }
         };

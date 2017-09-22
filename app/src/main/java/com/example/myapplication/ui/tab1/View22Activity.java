@@ -18,7 +18,6 @@ public class View22Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view22);
 
-
         // 设置屏幕为安全模式，使用户无法进行截屏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
 

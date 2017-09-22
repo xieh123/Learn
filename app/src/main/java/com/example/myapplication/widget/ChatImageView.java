@@ -85,6 +85,7 @@ public class ChatImageView extends ImageView {
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(mForegroundBitmap, 0, 0, mPaint);
         mPaint.setXfermode(null);
+
     }
 
     public Bitmap drawableToBitmap(Drawable drawable, int w, int h) {

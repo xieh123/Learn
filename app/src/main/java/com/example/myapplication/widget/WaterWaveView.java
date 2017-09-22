@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 
 /**
  * Created by xieH on 2017/4/24 0024.
@@ -53,8 +54,6 @@ public class WaterWaveView extends View {
      */
     private String mText = "1%";
 
-    private boolean isFirst = true;
-
     public WaterWaveView(Context context) {
         this(context, null);
     }
@@ -90,6 +89,45 @@ public class WaterWaveView extends View {
         mPath = new Path();
 
 
+        ValueAnimator animator = ValueAnimator.ofInt(0, mScreenWidth); // 设置移动范围为一个屏幕宽度
+        animator.setDuration(2000);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                int value = (int) valueAnimator.getAnimatedValue();
+                mOffset = value; // 修改偏移量
+                postInvalidate();
+            }
+        });
+
+        animator.start();
+
+        ValueAnimator animatorHeight = ValueAnimator.ofInt(0, getHeight() + mFu);
+        animatorHeight.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mWaveHeight = (int) valueAnimator.getAnimatedValue();
+                mText = String.valueOf((int) ((double) mWaveHeight / (double) (getHeight() + mFu) * 100)) + "%";
+                if (mWaveHeight == getHeight() + mFu) { // 当水位高于屏幕高度，停止水波纹移动效果
+                    valueAnimator.cancel();
+                }
+
+                if (mWaveHeight > getHeight() / 2) { // 当水位高于文字的时候，字体为白色，否则为浅蓝色
+                    mTextPaint.setColor(Color.WHITE);
+
+                } else {
+                    mTextPaint.setColor(Color.parseColor("#5DCEC6"));
+                }
+
+                postInvalidate();
+            }
+        });
+
+        animatorHeight.setDuration(30000); // 持续30秒
+        animatorHeight.setInterpolator(new LinearInterpolator());
+        animatorHeight.start();
     }
 
     @Override
@@ -121,49 +159,6 @@ public class WaterWaveView extends View {
         mPath.close();
 
         canvas.drawPath(mPath, mPaint);
-
-        if (isFirst) {
-            isFirst = false;
-
-            ValueAnimator animator = ValueAnimator.ofInt(0, mScreenWidth); // 设置移动范围为一个屏幕宽度
-            animator.setDuration(2000);
-            animator.setRepeatCount(ValueAnimator.INFINITE);
-            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    int value = (int) valueAnimator.getAnimatedValue();
-                    mOffset = value; // 修改偏移量
-                    postInvalidate();
-                }
-            });
-
-            animator.start();
-
-            ValueAnimator animatorHeight = ValueAnimator.ofInt(0, getHeight() + mFu);
-            animatorHeight.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    mWaveHeight = (int) valueAnimator.getAnimatedValue();
-                    mText = String.valueOf((int) ((double) mWaveHeight / (double) (getHeight() + mFu) * 100)) + "%";
-                    if (mWaveHeight == getHeight() + mFu) { // 当水位高于屏幕高度，停止水波纹移动效果
-                        valueAnimator.cancel();
-                    }
-
-                    if (mWaveHeight > getHeight() / 2) { // 当水位高于文字的时候，字体为白色，否则为浅蓝色
-                        mTextPaint.setColor(Color.WHITE);
-
-                    } else {
-                        mTextPaint.setColor(Color.parseColor("#5DCEC6"));
-                    }
-
-                    postInvalidate();
-                }
-            });
-
-            animatorHeight.setDuration(30000); // 持续10秒
-            animatorHeight.start();
-        }
-
 
 //        canvas.drawText(mText, getWidth() / 2 - mTextPaint.measureText(mText) / 2, getHeight() / 2, mTextPaint);
 //        mPaint.setXfermode(null);

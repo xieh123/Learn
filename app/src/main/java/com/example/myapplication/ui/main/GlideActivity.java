@@ -217,9 +217,9 @@ public class GlideActivity extends AppCompatActivity {
     }
 
     public void initAdapter() {
-        baseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mRecyclerView, itemList, R.layout.wx_chatting_item_to_image) {
+        baseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, itemList, R.layout.wx_chatting_item_to_image) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
 //                ImageView mImageView = holder.getView(R.id.recyclerview_item_iv);
 //                ImageUtils.loadImage(GlideActivity.this, mImageView, item.getUrl() + ImageUtils.THUMB_300X);
 

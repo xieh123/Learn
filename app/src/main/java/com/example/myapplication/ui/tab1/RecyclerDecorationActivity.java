@@ -163,9 +163,9 @@ public class RecyclerDecorationActivity extends AppCompatActivity {
     }
 
     public void initAdapter() {
-        mBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mRecyclerView, itemList, R.layout.recyclerview_item) {
+        mBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, itemList, R.layout.recyclerview_item) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
                 ImageView mImageView = holder.getView(R.id.recyclerview_item_iv);
 
                 ImageUtils.loadCornersImage(RecyclerDecorationActivity.this, mImageView, item.getUrl());

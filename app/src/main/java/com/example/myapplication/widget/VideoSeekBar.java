@@ -34,7 +34,7 @@ public class VideoSeekBar extends View {
     /**
      * 视频路径
      */
-    private String videoUri = null;
+    private String videoUrl = null;
 
     /**
      * 当前View 宽度
@@ -531,7 +531,7 @@ public class VideoSeekBar extends View {
         // 重新绘制进行刷新
         postInvalidate();
         // 判断路径是否为null
-        if (!TextUtils.isEmpty(videoUri)) {
+        if (!TextUtils.isEmpty(videoUrl)) {
             new Thread(btRunn).start();
         }
     }
@@ -555,7 +555,7 @@ public class VideoSeekBar extends View {
             // 图片的高度
             int btHeight = vHeight;
             // 设置视频的路径
-            mediaRetriever.setDataSource(videoUri);
+            mediaRetriever.setDataSource(videoUrl);
             // 取得视频的长度(单位为毫秒)
             String vTime = mediaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             // 保存视频总长度(毫秒)
@@ -599,7 +599,7 @@ public class VideoSeekBar extends View {
         @Override
         public void run() {
             // 获取文件路径
-            File file = new File(videoUri);
+            File file = new File(videoUrl);
             // 判断是否本地文件
             if (file.exists()) {
                 buildThumbsToLocal();
@@ -775,22 +775,22 @@ public class VideoSeekBar extends View {
      * 设置视频进度条
      *
      * @param isCutMode 是否裁剪模式
-     * @param videoUri  视频路径
+     * @param videoUrl  视频路径
      */
-    public void setVideoUri(boolean isCutMode, String videoUri) {
-        setVideoUri(isCutMode, videoUri, -1f);
+    public void setVideoUrl(boolean isCutMode, String videoUrl) {
+        setVideoUrl(isCutMode, videoUrl, -1f);
     }
 
     /**
      * 设置视频进度条
      *
      * @param isCutMode  是否裁剪模式
-     * @param videoUri   视频路径
+     * @param videoUrl   视频路径
      * @param videoFrame 关键帧时间(毫秒)
      */
-    public void setVideoUri(boolean isCutMode, String videoUri, float videoFrame) {
+    public void setVideoUrl(boolean isCutMode, String videoUrl, float videoFrame) {
         this.setCutMode(isCutMode);
-        this.videoUri = videoUri;
+        this.videoUrl = videoUrl;
         this.videoFrame = videoFrame;
         // 生成缩略图
         buildThumbs();

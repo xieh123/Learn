@@ -26,8 +26,6 @@ public class ViewActivity extends AppCompatActivity {
 
     private ImageView mImageView;
 
-    ////////////
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

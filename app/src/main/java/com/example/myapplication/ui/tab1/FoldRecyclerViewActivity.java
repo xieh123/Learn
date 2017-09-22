@@ -41,9 +41,9 @@ public class FoldRecyclerViewActivity extends AppCompatActivity {
     }
 
     public void initAdapter() {
-        mBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mParallaxRecyclerView, itemList, R.layout.item_recycler) {
+        mBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, itemList, R.layout.item_recycler) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
 
             }
         };

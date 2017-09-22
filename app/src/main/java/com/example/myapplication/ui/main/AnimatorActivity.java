@@ -41,11 +41,46 @@ public class AnimatorActivity extends AppCompatActivity {
     public void initView() {
         backgroundLl = (LinearLayout) findViewById(R.id.animator_ll);
         background11Ll = (LinearLayout) findViewById(R.id.animator_11_ll);
-        background22Ll = (LinearLayout) findViewById(R.id.animator_11_ll);
+        background22Ll = (LinearLayout) findViewById(R.id.animator_22_ll);
 
         mTextView = (TextView) findViewById(R.id.animator_tv);
         mPlayBtn = (Button) findViewById(R.id.animator_play_bt);
         mImageView = (ImageView) findViewById(R.id.animator_iv);
+
+        mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mImageView.animate()
+                        .translationX(300)
+                        .setDuration(2000);
+            }
+        });
+
+    }
+
+    /**
+     * 属性动画
+     */
+    public void test() {
+        mTextView.animate()
+                .translationX(500);
+
+        mTextView.animate()
+                .translationX(500)
+                .setDuration(2000);
+
+        mTextView.animate()
+                .alpha(1)
+                .scaleX(1)
+                .scaleY(1)
+                .translationX(500)
+                .setInterpolator(new LinearInterpolator())
+                .setUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+
+                    }
+                });
     }
 
     /**
@@ -54,8 +89,8 @@ public class AnimatorActivity extends AppCompatActivity {
      * @param v
      */
     public void add(View v) {
-        ObjectAnimator translationUp = ObjectAnimator.ofInt(backgroundLl,
-                "backgroundColor", Color.RED, Color.BLUE, Color.GRAY, Color.GREEN);
+        ObjectAnimator translationUp = ObjectAnimator.ofInt(backgroundLl, "backgroundColor",
+                Color.RED, Color.BLUE, Color.GRAY, Color.GREEN);
 
         /**
          * AccelerateDecelerateInterpolator: 在动画开始的地方速率改变比较慢，在中间的时侯加速
@@ -77,7 +112,6 @@ public class AnimatorActivity extends AppCompatActivity {
          *
          * 由于本例是改变View的backgroundColor属性的背景颜色所以此处使用ArgbEvaluator
          */
-
         translationUp.setEvaluator(new ArgbEvaluator());
         translationUp.start();
     }
@@ -145,17 +179,15 @@ public class AnimatorActivity extends AppCompatActivity {
     }
 
     public void play(View v) {
-        ValueAnimator mAnimator = ValueAnimator.ofInt(400);
+        ValueAnimator mAnimator = ValueAnimator.ofInt(100, 500);
         mAnimator.setInterpolator(new LinearInterpolator());
-        mAnimator.setDuration(2000);
+        mAnimator.setDuration(10000);
         //  mAnimator.setRepeatCount(ValueAnimator.INFINITE);
 
         mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-
                 int value = (int) valueAnimator.getAnimatedValue();
-
                 mPlayBtn.getLayoutParams().width = value;
                 mPlayBtn.requestLayout();
             }

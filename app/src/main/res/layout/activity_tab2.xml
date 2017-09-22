@@ -127,8 +127,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:onClick="guide"
-                    android:text="功能引导"
+                    android:onClick="playVideo"
+                    android:text="视频播放"
                     android:textAllCaps="false"/>
             </LinearLayout>
 
@@ -178,6 +178,15 @@
                     android:onClick="advertising"
                     android:text="广告动画"
                     android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="chronometer"
+                    android:text="计时器"
+                    android:textAllCaps="false"/>
+
 
             </LinearLayout>
 

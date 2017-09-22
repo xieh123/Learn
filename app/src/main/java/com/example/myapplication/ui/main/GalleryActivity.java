@@ -66,9 +66,9 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
     public void initAdapter() {
-        mBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(mRecyclerView, itemList, R.layout.item_card_view) {
+        mBaseRecyclerAdapter = new BaseRecyclerAdapter<Item>(this, itemList, R.layout.item_card_view) {
             @Override
-            public void convert(RecyclerHolder holder, Item item, int position, boolean isScrolling) {
+            public void convert(RecyclerHolder holder, Item item, int position) {
                 ImageView mImageView = holder.getView(R.id.item_iv);
                 Glide.with(GalleryActivity.this).load(item.getUrl()).into(mImageView);
             }

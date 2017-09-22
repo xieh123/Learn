@@ -5,8 +5,8 @@ import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -17,10 +17,9 @@ import android.widget.VideoView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.utils.DensityUtils;
-import com.example.myapplication.widget.VideoSeekBar;
 import com.example.myapplication.widget.VideoSeekBarView;
 
-import java.io.File;
+import java.util.HashMap;
 
 /**
  * Created by xieH on 2017/5/23 0023.
@@ -61,8 +60,10 @@ public class VideoSeekBarActivity extends AppCompatActivity {
 
     //////////////////////////////////////
     /////////////////////////////////////
-    private VideoSeekBar mVideoSeekBar;
+//    private VideoSeekBar mVideoSeekBar;
 
+
+    private String videoUrl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,13 +81,15 @@ public class VideoSeekBarActivity extends AppCompatActivity {
 
         ///////////////////////////////////
         ///////////////////////////////////
-        mVideoSeekBar = (VideoSeekBar) findViewById(R.id.VideoSeekBar);
+//        mVideoSeekBar = (VideoSeekBar) findViewById(R.id.VideoSeekBar);
 
-        final String videoUri = Environment.getExternalStorageDirectory().getAbsolutePath()
-                + File.separator + "HHH" + File.separator + "input.mp4";
+//        videoUrl = Environment.getExternalStorageDirectory().getAbsolutePath()
+//                + File.separator + "HHH" + File.separator + "input.mp4";
 
-        //  mVideoSeekBarView.setVideoUri(videoUri);
-        mVideoSeekBar.setVideoUri(true, videoUri);
+        videoUrl = "http://mpv.videocc.net/ce0812b122/a/ce0812b122bf0fb49d79ebd97cbe98fa_1.mp4";
+
+
+//        mVideoSeekBar.setVideoUrl(true, videoUrl);
 
         ////////////////////
         ///////////////////////////////////
@@ -101,18 +104,14 @@ public class VideoSeekBarActivity extends AppCompatActivity {
             }
         });
 
-        Uri uri = Uri.parse(videoUri);
-
-        //设置视频路径
+        Uri uri = Uri.parse(videoUrl);
         mVideoView.setVideoURI(uri);
-
-        //开始播放视频
         mVideoView.start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                buildThumbsToLocal(videoUri, DensityUtils.dp2px(VideoSeekBarActivity.this, 30), DensityUtils.dp2px(VideoSeekBarActivity.this, 60));
+                buildThumbsToLocal(videoUrl, DensityUtils.dp2px(VideoSeekBarActivity.this, 30), DensityUtils.dp2px(VideoSeekBarActivity.this, 60));
             }
         }).start();
 
@@ -129,11 +128,16 @@ public class VideoSeekBarActivity extends AppCompatActivity {
     /**
      * 生成缩略图（来自本地视频）
      */
-    public Bitmap[] buildThumbsToLocal(String videoUri, int width, int height) {
+    public Bitmap[] buildThumbsToLocal(String videoUrl, int width, int height) {
         MediaMetadataRetriever mediaRetriever = new MediaMetadataRetriever();
         try {
+            if (Build.VERSION.SDK_INT >= 14) {
+                mediaRetriever.setDataSource(videoUrl, new HashMap<String, String>());
+            } else {
+                mediaRetriever.setDataSource(videoUrl);
+            }
             // 设置视频的路径
-            mediaRetriever.setDataSource(videoUri);
+
             // 取得视频的长度(单位为毫秒)
             String vTime = mediaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             // 保存视频总长度(毫秒)
@@ -194,5 +198,6 @@ public class VideoSeekBarActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
 }
