@@ -24,6 +24,7 @@ import com.example.myapplication.ui.tab2.MagnifierActivity;
 import com.example.myapplication.ui.tab2.DrawableActivity;
 import com.example.myapplication.ui.tab2.SceneTransitionAnimationActivity;
 import com.example.myapplication.ui.tab2.TransitionActivity;
+import com.example.myapplication.ui.tab2.VegaScrollActivity;
 import com.example.myapplication.ui.tab2.View11Activity;
 import com.example.myapplication.ui.tab2.ViewActivity;
 
@@ -137,6 +138,11 @@ public class Tab2Activity extends AppCompatActivity {
 
     public void chronometer(View v) {
         Intent intent = new Intent(this, ChronometerActivity.class);
+        startActivity(intent);
+    }
+
+    public void vegaScroll(View v) {
+        Intent intent = new Intent(this, VegaScrollActivity.class);
         startActivity(intent);
     }
 }

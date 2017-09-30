@@ -140,6 +140,7 @@
         <activity android:name=".ui.tab2.ExifInfoActivity"/>
         <activity android:name=".ui.tab2.AdvertisingActivity"/>
         <activity android:name=".ui.tab2.ChronometerActivity"/>
+        <activity android:name=".ui.tab2.VegaScrollActivity"/>
 
 
         //////////// 图片选择 ////////////

@@ -77,7 +77,7 @@ public class Test44Fragment extends LazyFragment {
                 ImageUtils.loadBitmap(getActivity(), mItemList.get(position).getUrl(), new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        changeStatusBarColor(resource);
+                        //  changeStatusBarColor(resource);
                     }
                 });
             }
@@ -90,6 +90,11 @@ public class Test44Fragment extends LazyFragment {
 
     }
 
+    /**
+     * 最好在 Activity 使用
+     *
+     * @param bitmap
+     */
     private void changeStatusBarColor(Bitmap bitmap) {
         int pixel = bitmap.getPixel(bitmap.getWidth() / 2, 0); // 取图片最上面的中间色图
         int redValue = Color.red(pixel);
@@ -107,7 +112,6 @@ public class Test44Fragment extends LazyFragment {
 
         StatusBarCompat.Clean(getActivity(), Color.RED);
     }
-
 
     private void changeStatusBarColorByWebView() {
         WebView mWebView = new WebView(getActivity());

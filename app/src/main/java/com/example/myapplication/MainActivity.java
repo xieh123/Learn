@@ -11,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.dtr.zxing.activity.CaptureActivity;
-import com.example.myapplication.ui.rxbus.RxBusActivity;
 import com.example.myapplication.ui.main.AnimatorActivity;
 import com.example.myapplication.ui.main.CardViewActivity;
 import com.example.myapplication.ui.main.ChangeThemeActivity;
@@ -31,6 +30,7 @@ import com.example.myapplication.ui.main.SurfaceViewActivity;
 import com.example.myapplication.ui.main.UserInfoActivity;
 import com.example.myapplication.ui.main.WaterImageActivity;
 import com.example.myapplication.ui.main.WebViewActivity;
+import com.example.myapplication.ui.rxbus.RxBusActivity;
 import com.xieh.imagepicker.SelectImageActivity;
 import com.xieh.imagepicker.config.SelectOptions;
 

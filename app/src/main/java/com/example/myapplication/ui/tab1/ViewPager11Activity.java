@@ -50,7 +50,7 @@ public class ViewPager11Activity extends AppCompatActivity {
         mSlidingTabViewPagerAdapter.addFragment(new Test11Fragment(), "test33");
 
 
-        mViewPager.setOffscreenPageLimit(1);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mSlidingTabViewPagerAdapter);
 
         mTabLayout = (TabLayout) findViewById(R.id.tabLayout);

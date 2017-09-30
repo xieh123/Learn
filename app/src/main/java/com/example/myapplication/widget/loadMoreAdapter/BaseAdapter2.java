@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * Created by xieH on 2017/8/4 0004.
  */
-public abstract class BaseAdapter22<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+@Deprecated
+public abstract class BaseAdapter2<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int TYPE_NORMAL_VIEW = 10001;  // 普通类型 item
     public static final int TYPE_FOOTER_VIEW = 10002;  // footer 类型 item
@@ -34,7 +35,7 @@ public abstract class BaseAdapter22<T> extends RecyclerView.Adapter<RecyclerView
 
     public abstract void convert(ViewHolder holder, T item, int position);
 
-    public BaseAdapter22(Context context, List<T> datas, int itemLayoutId, boolean isOpenLoadMore) {
+    public BaseAdapter2(Context context, List<T> datas, int itemLayoutId, boolean isOpenLoadMore) {
         this.mContext = context;
         this.mDatas = datas == null ? new ArrayList<T>() : datas;
         this.mItemLayoutId = itemLayoutId;

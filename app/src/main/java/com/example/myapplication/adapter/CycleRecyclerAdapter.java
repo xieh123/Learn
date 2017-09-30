@@ -27,7 +27,7 @@ public class CycleRecyclerAdapter extends RecyclerView.Adapter<CycleRecyclerAdap
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(mContext, R.layout.recyclerview_item, null);
+        View view = View.inflate(mContext, R.layout.item_recyclerview, null);
 
         MyViewHolder holder = new MyViewHolder(view);
 

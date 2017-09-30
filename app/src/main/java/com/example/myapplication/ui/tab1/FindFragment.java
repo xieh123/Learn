@@ -52,9 +52,7 @@ public class FindFragment extends LazyFragment implements View.OnClickListener {
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.find_fl, mFragmentList.get(index))
-        .commit();
-
-
+                .commit();
         index++;
     }
 

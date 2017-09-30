@@ -31,11 +31,14 @@ public class ViewPagerActivity extends BaseActivity {
 
     private int[] backgroundColors;
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_viewpager;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewpager);
 
         initView();
 

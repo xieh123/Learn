@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter22;
+import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter2;
 import com.example.myapplication.widget.loadMoreAdapter.EmptyLayout;
 import com.example.myapplication.widget.loadMoreAdapter.LoadingFooterLayout;
 import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
@@ -26,7 +26,7 @@ import java.util.Random;
 public class LoadMoreActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private BaseAdapter22<Item> mBaseAdapter;
+    private BaseAdapter2<Item> mBaseAdapter;
     private List<Item> mItemList = new ArrayList<>();
 
     @Override
@@ -90,14 +90,14 @@ public class LoadMoreActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        mBaseAdapter = new BaseAdapter22<Item>(this, mItemList, R.layout.item_recycler, true) {
+        mBaseAdapter = new BaseAdapter2<Item>(this, mItemList, R.layout.item_recycler, true) {
             @Override
             public void convert(ViewHolder holder, Item item, int position) {
 
             }
         };
 
-        mBaseAdapter.setOnLoadMoreListener(new BaseAdapter22.OnLoadMoreListener() {
+        mBaseAdapter.setOnLoadMoreListener(new BaseAdapter2.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
                 System.out.println("hhh-------load more-----");

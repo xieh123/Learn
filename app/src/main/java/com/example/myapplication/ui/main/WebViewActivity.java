@@ -1,5 +1,8 @@
 package com.example.myapplication.ui.main;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -35,6 +39,10 @@ public class WebViewActivity extends AppCompatActivity {
     private WebView mWebView;
 
     private ProgressWebView mProgressWebView;
+
+    private ValueCallback<Uri> mUploadMessage;
+    private ValueCallback<Uri[]> mUploadMessageAboveL;
+    private final static int FILE_CHOOSER_RESULT_CODE = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,6 +92,8 @@ public class WebViewActivity extends AppCompatActivity {
         mWebView.setHorizontalScrollBarEnabled(false);
         mWebView.setVerticalScrollBarEnabled(false);
 
+        mWebView.setWebChromeClient(mWebChromeClient);
+
 //        mWebView.getSettings().setBlockNetworkImage(true);
 
         mWebView.setWebViewClient(new WebViewClient() {
@@ -99,9 +109,6 @@ public class WebViewActivity extends AppCompatActivity {
                     intent.setData(Uri.parse(url));
                     startActivity(intent);
                 }
-
-                System.out.println("h----shouldOverrideUrlLoading");
-
                 return true;
             }
 
@@ -161,7 +168,110 @@ public class WebViewActivity extends AppCompatActivity {
 
         url = "http://partner.eggou.com/";
 
+        url = "https://bhapp.boohee.com/webapp/virtual_goods/nice_plus/intro?type=nice&share=true&app_device=Android&os_version=4.4.4&app_version=5.9.3.2&version_code=122&channel=tencent&app_key=one&token=aYrTLM99qrqjqr2v7EqA#MQPanelVisible";
+
         mWebView.loadUrl(url);
+    }
+
+    /**
+     * 文件选择
+     */
+    private WebChromeClient mWebChromeClient = new WebChromeClient() {
+
+        // For Android < 3.0
+        public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+            mUploadMessage = uploadMsg;
+            openImageChooserActivity();
+        }
+
+        // For Android  >= 3.0
+        public void openFileChooser(ValueCallback uploadMsg, String acceptType) {
+            mUploadMessage = uploadMsg;
+            openImageChooserActivity();
+        }
+
+        // For Android  >= 4.1
+        public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
+            mUploadMessage = uploadMsg;
+            openImageChooserActivity();
+        }
+
+        // For Android >= 5.0
+        @Override
+        public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+            mUploadMessageAboveL = filePathCallback;
+            openImageChooserActivity();
+            return true;
+        }
+
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            super.onProgressChanged(view, newProgress);
+        }
+    };
+
+    /**
+     * 选择图片
+     */
+    private void openImageChooserActivity() {
+//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//拍照
+//        startActivityForResult(Intent.createChooser(cameraIntent, "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
+
+        Intent localIntent = new Intent("android.intent.action.GET_CONTENT");
+        localIntent.addCategory("android.intent.category.OPENABLE");
+        localIntent.setType("image/*");
+        startActivityForResult(Intent.createChooser(localIntent, "Image Chooser"), FILE_CHOOSER_RESULT_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == FILE_CHOOSER_RESULT_CODE && (mUploadMessage != null || mUploadMessageAboveL != null)) {
+            Uri uri;
+            if (data == null || resultCode != RESULT_OK) {
+                uri = null;
+            } else {
+                uri = data.getData();
+            }
+            if (this.mUploadMessageAboveL != null) {
+                this.onActivityResultAboveL(requestCode, resultCode, data);
+                return;
+            }
+            if (this.mUploadMessage != null) {
+                this.mUploadMessage.onReceiveValue(uri);
+                // 重置选择，避免第二次打开不了文件选择
+                this.mUploadMessage = null;
+            }
+        }
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void onActivityResultAboveL(int requestCode, int resultCode, Intent intent) {
+        if (requestCode != FILE_CHOOSER_RESULT_CODE || mUploadMessageAboveL == null)
+            return;
+
+        Uri[] results = null;
+        if (resultCode == Activity.RESULT_OK) {
+            if (intent != null) {
+                String dataString = intent.getDataString();
+                ClipData clipData = intent.getClipData();
+                if (clipData != null) {
+                    results = new Uri[clipData.getItemCount()];
+                    for (int i = 0; i < clipData.getItemCount(); i++) {
+                        ClipData.Item item = clipData.getItemAt(i);
+                        results[i] = item.getUri();
+                    }
+                }
+                if (dataString != null)
+                    results = new Uri[]{Uri.parse(dataString)};
+            }
+        }
+
+        mUploadMessageAboveL.onReceiveValue(results);
+        // 重置选择，避免第二次打开不了文件选择
+        mUploadMessageAboveL = null;
     }
 
     @Override
@@ -245,6 +355,8 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
 
+    ////////////////////////////////////////////////
+
     /**
      * 保存图片
      *
@@ -290,5 +402,4 @@ public class WebViewActivity extends AppCompatActivity {
         InputStream is = new ByteArrayInputStream(baos.toByteArray());
         return is;
     }
-
 }
