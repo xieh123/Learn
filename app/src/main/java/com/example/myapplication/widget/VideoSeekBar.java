@@ -656,7 +656,7 @@ public class VideoSeekBar extends View {
     /**
      * 对外获取时间
      */
-    private long displayTime = 0l;
+    private long displayTime = 0L;
 
     /**
      * 设置定时器，刷新View

@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.QRCodeUtil;
+import com.example.myapplication.util.QRCodeUtil;
 
 /**
  * Created by xieH on 2017/1/4 0004.

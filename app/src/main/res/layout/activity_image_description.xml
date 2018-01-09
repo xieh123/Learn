@@ -11,7 +11,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/welcome_thirdly" />
 
-    <com.example.myapplication.widget.imageDetail.ImageDescriptionView
+    <com.example.myapplication.widget.imagedetail.ImageDescriptionView
         android:id="@+id/image_description_ImageDescriptionView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

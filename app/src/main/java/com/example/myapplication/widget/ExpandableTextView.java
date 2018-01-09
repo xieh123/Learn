@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.DensityUtils;
+import com.example.myapplication.util.DensityUtils;
 
 /**
  * Created by xieH on 2017/5/2 0002.
@@ -268,9 +268,9 @@ public class ExpandableTextView extends LinearLayout implements View.OnClickList
         ValueAnimator valueAnimator;
         if (mCollapsed) {
 //            mTvContent.setMaxLines(mMaxCollapsedLines);
-            valueAnimator = new ValueAnimator().ofInt(getHeight(), mCollapsedHeight);
+            valueAnimator = ValueAnimator.ofInt(getHeight(), mCollapsedHeight);
         } else {
-            valueAnimator = new ValueAnimator().ofInt(getHeight(), getHeight() +
+            valueAnimator = ValueAnimator.ofInt(getHeight(), getHeight() +
                     mTextHeightWithMaxLines - mTvContent.getHeight());
         }
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

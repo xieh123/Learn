@@ -194,7 +194,48 @@
                     android:onClick="vegaScroll"
                     android:text="Vega Scroll "
                     android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="itemSlide"
+                    android:text="Item Slide"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="deviceInfo"
+                    android:text="获取手机设备信息"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="broadcast"
+                    android:text="广播+沉浸式状态栏"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="voiceBroadcast"
+                    android:text="语音播报"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="voicePlay"
+                    android:text="音乐播放"
+                    android:textAllCaps="false"/>
             </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

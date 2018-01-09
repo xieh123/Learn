@@ -20,8 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.DeviceUtils;
-import com.example.myapplication.utils.RecordUtils;
+import com.example.myapplication.util.DeviceUtils;
+import com.example.myapplication.util.RecordUtils;
 import com.example.myapplication.widget.RecorderProgress;
 
 import java.util.Collections;

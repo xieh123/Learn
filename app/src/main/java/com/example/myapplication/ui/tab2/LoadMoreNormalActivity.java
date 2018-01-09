@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter;
-import com.example.myapplication.widget.loadMoreAdapter.EmptyLayout;
-import com.example.myapplication.widget.loadMoreAdapter.LoadingFooterLayout;
-import com.example.myapplication.widget.loadMoreAdapter.NormalBaseAdapter;
-import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
+import com.example.myapplication.widget.loadmoreadapter.BaseAdapter;
+import com.example.myapplication.widget.loadmoreadapter.EmptyLayout;
+import com.example.myapplication.widget.loadmoreadapter.LoadingFooterLayout;
+import com.example.myapplication.widget.loadmoreadapter.BaseNormalAdapter;
+import com.example.myapplication.widget.loadmoreadapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<Item> mItemList = new ArrayList<>();
 
-    private NormalBaseAdapter<Item> mNormalBaseAdapter;
+    private BaseNormalAdapter<Item> mBaseNormalAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,26 +50,26 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
 //        EmptyLayout mEmptyLayout = new EmptyLayout(this);
 //        View loadingView = View.inflate(this, R.layout.dialog_loading, null);
 //        mEmptyLayout.setLoadingView(loadingView);
-//        mNormalBaseAdapter.setEmptyLayout(mEmptyLayout);
+//        mBaseNormalAdapter.setEmptyLayout(mEmptyLayout);
 //
 //        //////
 //        LoadingFooterLayout mLoadingFooterLayout = new LoadingFooterLayout(this);
 //        View loadMoreLoadingView = View.inflate(this, R.layout.recycler_footer_loading, null);
 //        mLoadingFooterLayout.setLoadingView(loadMoreLoadingView);
-//        mNormalBaseAdapter.setFooterLayout(mLoadingFooterLayout);
+//        mBaseNormalAdapter.setFooterLayout(mLoadingFooterLayout);
 
         ////
-        mRecyclerView.setAdapter(mNormalBaseAdapter);
+        mRecyclerView.setAdapter(mBaseNormalAdapter);
 
         ///////////
-        mNormalBaseAdapter.getEmptyLayout().setOnReloadListener(new EmptyLayout.OnReloadListener() {
+        mBaseNormalAdapter.getEmptyLayout().setOnReloadListener(new EmptyLayout.OnReloadListener() {
             @Override
             public void onReload() {
                 getData();
             }
         });
 
-        mNormalBaseAdapter.getFooterLayout().setOnReloadListener(new LoadingFooterLayout.OnReloadListener() {
+        mBaseNormalAdapter.getFooterLayout().setOnReloadListener(new LoadingFooterLayout.OnReloadListener() {
             @Override
             public void onReload() {
                 new Handler().postDelayed(new Runnable() {
@@ -77,9 +77,9 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
                     public void run() {
                         int index = new Random().nextInt(3);
                         if (index == 0) {
-                            mNormalBaseAdapter.loadMoreError();
+                            mBaseNormalAdapter.loadMoreError();
                         } else if (index == 1) {
-                            mNormalBaseAdapter.loadMoreEnd();
+                            mBaseNormalAdapter.loadMoreEnd();
                         } else if (index == 2) {
                             setData();
                         }
@@ -90,7 +90,7 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        mNormalBaseAdapter = new NormalBaseAdapter<Item>(this, mItemList, true) {
+        mBaseNormalAdapter = new BaseNormalAdapter<Item>(this, mItemList, true) {
             @Override
             protected void convert(ViewHolder holder, Item item, int position) {
 
@@ -102,7 +102,7 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
             }
         };
 
-        mNormalBaseAdapter.setOnLoadMoreListener(new BaseAdapter.OnLoadMoreListener() {
+        mBaseNormalAdapter.setOnLoadMoreListener(new BaseAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
                 System.out.println("hhh-------load more-----");
@@ -113,9 +113,9 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
                         int index = new Random().nextInt(3);
 
                         if (index == 0) {
-                            mNormalBaseAdapter.loadMoreError();
+                            mBaseNormalAdapter.loadMoreError();
                         } else if (index == 1) {
-                            mNormalBaseAdapter.loadMoreEnd();
+                            mBaseNormalAdapter.loadMoreEnd();
                         } else if (index == 2) {
                             setData();
                         }
@@ -132,9 +132,9 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
                 int index = new Random().nextInt(3);
 
                 if (index == 0) {
-                    mNormalBaseAdapter.loadError();
+                    mBaseNormalAdapter.loadError();
                 } else if (index == 1) {
-                    mNormalBaseAdapter.loadEnd();
+                    mBaseNormalAdapter.loadEnd();
                 } else if (index == 2) {
                     setData();
                 }
@@ -148,10 +148,10 @@ public class LoadMoreNormalActivity extends AppCompatActivity {
             mItemList.add(item);
         }
 
-        mNormalBaseAdapter.refresh(mItemList);
+        mBaseNormalAdapter.refresh(mItemList);
 
         // 恢复状态
-        mNormalBaseAdapter.loadMoreNormal();
+        mBaseNormalAdapter.loadMoreNormal();
     }
 
 }

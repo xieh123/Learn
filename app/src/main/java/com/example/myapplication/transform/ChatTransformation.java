@@ -7,8 +7,9 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
-import android.view.Display;
+import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
@@ -20,11 +21,16 @@ import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
  */
 public class ChatTransformation extends BitmapTransformation {
 
-    private Paint mPaint;  // 画笔
     private Context mContext;
-    private int mShapeRes;  // 形状的drawable资源
 
-    public ChatTransformation(Context context, int shapeRes) {
+    private Paint mPaint;
+
+    /**
+     * 形状的drawable资源
+     */
+    private int mShapeRes;
+
+    public ChatTransformation(Context context, @DrawableRes int shapeRes) {
         super(context);
         this.mContext = context;
         this.mShapeRes = shapeRes;
@@ -82,22 +88,6 @@ public class ChatTransformation extends BitmapTransformation {
         return "ChatTransformation" + mShapeRes;
     }
 
-    // 获取屏幕的宽度
-    @SuppressWarnings("deprecation")
-    public int getScreenWidth(Context context) {
-        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = manager.getDefaultDisplay();
-        return display.getWidth();
-    }
-
-    // 获取屏幕的高度
-    @SuppressWarnings("deprecation")
-    public int getScreenHeight(Context context) {
-        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = manager.getDefaultDisplay();
-        return display.getHeight();
-    }
-
     public int getBitmapWidth() {
         return getScreenWidth(mContext) / 3;
     }
@@ -105,4 +95,33 @@ public class ChatTransformation extends BitmapTransformation {
     public int getBitmapHeight() {
         return getScreenHeight(mContext) / 4;
     }
+
+    /**
+     * 获得屏幕高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenWidth(Context context) {
+        WindowManager wm = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        return outMetrics.widthPixels;
+    }
+
+    /**
+     * 获得屏幕宽度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenHeight(Context context) {
+        WindowManager wm = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        return outMetrics.heightPixels;
+    }
+
 }

@@ -20,6 +20,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED"/>
 
 
     <application
@@ -70,6 +72,7 @@
         <activity android:name=".ui.main.DownloadNotificationActivity"/>
         <activity android:name=".ui.main.GalleryActivity"/>
         <activity android:name=".ui.main.LoginActivity"/>
+        <activity android:name=".ui.main.OrderDetailsActivity"/>
         <activity android:name=".ui.tab1.GotoQQActivity"/>
 
         <activity android:name=".Tab1Activity"/>
@@ -130,7 +133,7 @@
         <activity android:name=".ui.tab2.TransitionActivity"/>
         <activity android:name=".ui.tab2.View11Activity"/>
         <activity android:name=".ui.tab2.EditMenuActivity"/>
-        <activity android:name=".ui.tab2.PlayVideoActivity"/>
+        <activity android:name=".ui.tab2.VideoPlayActivity"/>
         <activity android:name=".ui.tab2.Behavior11Activity"/>
         <activity android:name=".ui.tab2.EmojiActivity"/>
         <activity android:name=".ui.tab2.DrawableActivity"/>
@@ -141,6 +144,12 @@
         <activity android:name=".ui.tab2.AdvertisingActivity"/>
         <activity android:name=".ui.tab2.ChronometerActivity"/>
         <activity android:name=".ui.tab2.VegaScrollActivity"/>
+        <activity android:name=".ui.tab2.ItemSlideActivity"/>
+        <activity android:name=".ui.tab2.DeviceInfoActivity"/>
+        <activity android:name=".ui.tab2.TestActivity"/>
+        <activity android:name=".ui.tab2.BroadcastActivity"/>
+        <activity android:name=".ui.tab2.VoiceBroadcastActivity"/>
+        <activity android:name=".ui.tab2.VoicePlayActivity"/>
 
 
         //////////// 图片选择 ////////////
@@ -149,6 +158,16 @@
         <activity android:name="com.xieh.imagepicker.crop.CropActivity"/>
 
         <service android:name=".download.DownloadService"/>
+
+
+        <receiver
+            android:name=".receiver.NetworkChangeReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

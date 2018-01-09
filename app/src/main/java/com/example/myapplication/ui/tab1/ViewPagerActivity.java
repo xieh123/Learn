@@ -51,6 +51,7 @@ public class ViewPagerActivity extends BaseActivity {
 
     }
 
+    @Override
     public void initView() {
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         mNavigationView.inflateHeaderView(R.layout.fragment_find);

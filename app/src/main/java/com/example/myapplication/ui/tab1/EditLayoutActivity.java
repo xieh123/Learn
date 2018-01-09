@@ -37,7 +37,7 @@ public class EditLayoutActivity extends AppCompatActivity {
 
     public void initView() {
 
-        EditRecyclerView mRecyclerView = (EditRecyclerView) findViewById(R.id.recycler_view);
+        EditRecyclerView mRecyclerView = (EditRecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));

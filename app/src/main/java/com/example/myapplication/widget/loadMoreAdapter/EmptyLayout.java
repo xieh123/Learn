@@ -1,4 +1,4 @@
-package com.example.myapplication.widget.loadMoreAdapter;
+package com.example.myapplication.widget.loadmoreadapter;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -158,10 +158,25 @@ public class EmptyLayout extends RelativeLayout {
     }
 
     public enum State {
-        Normal,  // 正常
-        Loading, // 加载中...
-        End,     // 加载完成
-        Error    // 加载失败
+        /**
+         * 正常
+         */
+        Normal,
+
+        /**
+         * 加载中...
+         */
+        Loading,
+
+        /**
+         * 加载完成
+         */
+        End,
+
+        /**
+         * 加载失败
+         */
+        Error
     }
 
     /**

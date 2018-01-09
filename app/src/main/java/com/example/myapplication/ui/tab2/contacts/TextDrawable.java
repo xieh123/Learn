@@ -178,41 +178,49 @@ public class TextDrawable extends ShapeDrawable {
             toUpperCase = false;
         }
 
+        @Override
         public IConfigBuilder width(int width) {
             this.width = width;
             return this;
         }
 
+        @Override
         public IConfigBuilder height(int height) {
             this.height = height;
             return this;
         }
 
+        @Override
         public IConfigBuilder textColor(int color) {
             this.textColor = color;
             return this;
         }
 
+        @Override
         public IConfigBuilder withBorder(int thickness) {
             this.borderThickness = thickness;
             return this;
         }
 
+        @Override
         public IConfigBuilder useFont(Typeface font) {
             this.font = font;
             return this;
         }
 
+        @Override
         public IConfigBuilder fontSize(int size) {
             this.fontSize = size;
             return this;
         }
 
+        @Override
         public IConfigBuilder bold() {
             this.isBold = true;
             return this;
         }
 
+        @Override
         public IConfigBuilder toUpperCase() {
             this.toUpperCase = true;
             return this;

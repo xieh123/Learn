@@ -17,7 +17,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.DensityUtils;
+import com.example.myapplication.util.DensityUtils;
 
 /**
  * Created by xieH on 2017/7/5 0005.
@@ -89,7 +89,7 @@ public class TransitionActivity extends AppCompatActivity {
         // 设置伸展状态时的布局
         mSearchTv.setText("搜索简书的内容和朋友");
         RelativeLayout.LayoutParams LayoutParams = (RelativeLayout.LayoutParams) mSearchLl.getLayoutParams();
-        LayoutParams.width = LayoutParams.MATCH_PARENT;
+        LayoutParams.width = RelativeLayout.LayoutParams.MATCH_PARENT;
         LayoutParams.setMargins(DensityUtils.dp2px(this, 10), DensityUtils.dp2px(this, 10), DensityUtils.dp2px(this, 10), DensityUtils.dp2px(this, 10));
         mSearchLl.setLayoutParams(LayoutParams);
         // 开始动画

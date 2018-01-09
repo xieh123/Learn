@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMoreAdapter.MultiBaseAdapter;
-import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
+import com.example.myapplication.widget.loadmoreadapter.BaseMultiAdapter;
+import com.example.myapplication.widget.loadmoreadapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class AdvertisingActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
-    private MultiBaseAdapter<Item> mBaseAdapter;
+    private BaseMultiAdapter<Item> mBaseAdapter;
     private List<Item> mItemList = new ArrayList<>();
 
     @Override
@@ -43,7 +43,7 @@ public class AdvertisingActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        mBaseAdapter = new MultiBaseAdapter<Item>(this, mItemList, false) {
+        mBaseAdapter = new BaseMultiAdapter<Item>(this, mItemList, false) {
             @Override
             protected void convert(ViewHolder holder, Item item, int position) {
                 if (getItemViewType(position) == 1) {

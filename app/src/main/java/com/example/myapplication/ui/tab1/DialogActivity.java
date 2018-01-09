@@ -16,8 +16,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.fragment.dialog.BaseDialogFragment;
 import com.example.myapplication.fragment.dialog.NiceDialogFragment;
 import com.example.myapplication.fragment.dialog.ViewHolder;
-import com.example.myapplication.utils.DialogFragmentHelper;
-import com.example.myapplication.utils.IDialogResultListener;
+import com.example.myapplication.util.DialogFragmentHelper;
+import com.example.myapplication.util.IDialogResultListener;
 import com.example.myapplication.widget.CommonDialogFragment;
 
 import java.util.Calendar;

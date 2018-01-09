@@ -145,8 +145,9 @@ public class IndicatorViewPager extends FrameLayout {
     }
 
     public void setViewpagerData(List<Item> itemList) {
-        if (itemList == null)
+        if (itemList == null) {
             return;
+        }
 
         this.mItemList = itemList;
         this.mCount = itemList.size();

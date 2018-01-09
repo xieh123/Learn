@@ -18,6 +18,7 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 
 import com.example.myapplication.R;
 import com.example.myapplication.widget.ProgressWebView;
@@ -36,6 +37,8 @@ public class WebViewActivity extends AppCompatActivity {
 
     private String url = "https://www.eggou.com/mobile";
 
+    private EditText mUrlEt;
+
     private WebView mWebView;
 
     private ProgressWebView mProgressWebView;
@@ -49,11 +52,24 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
+        mUrlEt = (EditText) findViewById(R.id.webView_url_et);
+
         // initProgressView();
 
         initView();
     }
 
+    public void go(View v) {
+        url = mUrlEt.getText().toString();
+
+        if (mProgressWebView != null) {
+            mProgressWebView.loadUrl(url);
+        }
+
+        if (mWebView != null) {
+            mWebView.loadUrl(url);
+        }
+    }
 
     public void initProgressView() {
         mProgressWebView = (ProgressWebView) findViewById(R.id.webView_progressWebView);
@@ -80,6 +96,7 @@ public class WebViewActivity extends AppCompatActivity {
 
     /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////
+
     public void initView() {
         mWebView = (WebView) findViewById(R.id.webView_wv);
         mWebView.setVisibility(View.VISIBLE);
@@ -167,8 +184,6 @@ public class WebViewActivity extends AppCompatActivity {
         });
 
         url = "http://partner.eggou.com/";
-
-        url = "https://bhapp.boohee.com/webapp/virtual_goods/nice_plus/intro?type=nice&share=true&app_device=Android&os_version=4.4.4&app_version=5.9.3.2&version_code=122&channel=tencent&app_key=one&token=aYrTLM99qrqjqr2v7EqA#MQPanelVisible";
 
         mWebView.loadUrl(url);
     }
@@ -402,4 +417,5 @@ public class WebViewActivity extends AppCompatActivity {
         InputStream is = new ByteArrayInputStream(baos.toByteArray());
         return is;
     }
+
 }

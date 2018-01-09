@@ -23,6 +23,7 @@ public class RotatableImageButton extends ImageButton {
         super(paramContext, paramAttributeSet, paramInt);
     }
 
+    @Override
     protected void onDraw(Canvas paramCanvas) {
         paramCanvas.save(Canvas.MATRIX_SAVE_FLAG);
         paramCanvas.rotate(this.degrees, getWidth() / 2.0F, getHeight() / 2.0F);

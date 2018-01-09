@@ -18,10 +18,13 @@ import android.widget.RelativeLayout;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.BaseRecyclerAdapter;
+import com.example.myapplication.adapter.ChannelAdapter;
 import com.example.myapplication.adapter.RecyclerHolder;
+import com.example.myapplication.listener.ItemDragHelperCallback;
+import com.example.myapplication.model.ChannelEntity;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.utils.ItemTouchCallback;
-import com.example.myapplication.utils.SimpleItemTouchHelperCallback;
+import com.example.myapplication.util.ItemTouchCallback;
+import com.example.myapplication.util.SimpleItemTouchHelperCallback;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,15 +49,20 @@ public class EditMenuActivity extends AppCompatActivity implements ItemTouchCall
 
     private LinearLayout mLinearLayout;
 
+    /////////////////
+
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_menu);
 
-        initView();
+//        initView();
+//
+//        setData();
 
-        setData();
+        init();
     }
 
     protected void initView() {
@@ -99,10 +107,10 @@ public class EditMenuActivity extends AppCompatActivity implements ItemTouchCall
             public void onItemClick(View view, Object data, final int position) {
                 final PathMeasure mPathMeasure;
                 final float[] mCurrentPosition = new float[2];
-                int parentLoc[] = new int[2];
+                int[] parentLoc = new int[2];
                 mLinearLayout.getLocationInWindow(parentLoc);
 
-                int startLoc[] = new int[2];
+                int[] startLoc = new int[2];
                 view.getLocationInWindow(startLoc);
 
                 final View startView = view;
@@ -112,7 +120,7 @@ public class EditMenuActivity extends AppCompatActivity implements ItemTouchCall
 
                 final View endView;
                 float toX, toY;
-                int endLoc[] = new int[2];
+                int[] endLoc = new int[2];
                 // 进行判断
                 int i = mSelectList.size();
 
@@ -228,5 +236,45 @@ public class EditMenuActivity extends AppCompatActivity implements ItemTouchCall
         mSelectBaseRecyclerAdapter.notifyItemRemoved(position);
     }
 
+
+    private void init() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        final List<ChannelEntity> items = new ArrayList<>();
+        for (int i = 0; i < 18; i++) {
+            ChannelEntity entity = new ChannelEntity();
+            entity.setName("频道" + i);
+            items.add(entity);
+        }
+        final List<ChannelEntity> otherItems = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            ChannelEntity entity = new ChannelEntity();
+            entity.setName("其他" + i);
+            otherItems.add(entity);
+        }
+
+        GridLayoutManager manager = new GridLayoutManager(this, 4);
+        mRecyclerView.setLayoutManager(manager);
+
+        ItemDragHelperCallback callback = new ItemDragHelperCallback();
+        final ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(mRecyclerView);
+
+        final ChannelAdapter adapter = new ChannelAdapter(this, helper, items, otherItems);
+        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                int viewType = adapter.getItemViewType(position);
+                return viewType == ChannelAdapter.TYPE_MY || viewType == ChannelAdapter.TYPE_OTHER ? 1 : 4;
+            }
+        });
+        mRecyclerView.setAdapter(adapter);
+
+//        adapter.setOnMyChannelItemClickListener(new ChannelAdapter.OnMyChannelItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int position) {
+//                Toast.makeText(ChannelActivity.this, items.get(position).getName(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+    }
 
 }

@@ -255,6 +255,14 @@
                     android:onClick="gallery"
                     android:text="RecyclerView实现画廊"
                     android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="orderDetails"
+                    android:text="订单详情"
+                    android:textAllCaps="false" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

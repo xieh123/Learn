@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter;
-import com.example.myapplication.widget.loadMoreAdapter.EmptyLayout;
-import com.example.myapplication.widget.loadMoreAdapter.LoadingFooterLayout;
-import com.example.myapplication.widget.loadMoreAdapter.MultiBaseAdapter;
-import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
+import com.example.myapplication.widget.loadmoreadapter.BaseAdapter;
+import com.example.myapplication.widget.loadmoreadapter.BaseMultiAdapter;
+import com.example.myapplication.widget.loadmoreadapter.EmptyLayout;
+import com.example.myapplication.widget.loadmoreadapter.LoadingFooterLayout;
+import com.example.myapplication.widget.loadmoreadapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private List<Item> mItemList = new ArrayList<>();
-    private MultiBaseAdapter<Item> mMultiBaseAdapter;
+    private BaseMultiAdapter<Item> mBaseMultiAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,26 +49,26 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
 //        EmptyLayout mEmptyLayout = new EmptyLayout(this);
 //        View loadingView = View.inflate(this, R.layout.dialog_loading, null);
 //        mEmptyLayout.setLoadingView(loadingView);
-//        mMultiBaseAdapter.setEmptyLayout(mEmptyLayout);
+//        mBaseMultiAdapter.setEmptyLayout(mEmptyLayout);
 //
 //        //////
 //        LoadingFooterLayout mLoadingFooterLayout = new LoadingFooterLayout(this);
 //        View loadMoreLoadingView = View.inflate(this, R.layout.recycler_footer_loading, null);
 //        mLoadingFooterLayout.setLoadingView(loadMoreLoadingView);
-//        mMultiBaseAdapter.setFooterLayout(mLoadingFooterLayout);
+//        mBaseMultiAdapter.setFooterLayout(mLoadingFooterLayout);
 
         ////
-        mRecyclerView.setAdapter(mMultiBaseAdapter);
+        mRecyclerView.setAdapter(mBaseMultiAdapter);
 
         ///////////
-        mMultiBaseAdapter.getEmptyLayout().setOnReloadListener(new EmptyLayout.OnReloadListener() {
+        mBaseMultiAdapter.getEmptyLayout().setOnReloadListener(new EmptyLayout.OnReloadListener() {
             @Override
             public void onReload() {
                 getData();
             }
         });
 
-        mMultiBaseAdapter.getFooterLayout().setOnReloadListener(new LoadingFooterLayout.OnReloadListener() {
+        mBaseMultiAdapter.getFooterLayout().setOnReloadListener(new LoadingFooterLayout.OnReloadListener() {
             @Override
             public void onReload() {
                 new Handler().postDelayed(new Runnable() {
@@ -77,9 +77,9 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
                         int index = new Random().nextInt(3);
 
                         if (index == 0) {
-                            mMultiBaseAdapter.loadMoreError();
+                            mBaseMultiAdapter.loadMoreError();
                         } else if (index == 1) {
-                            mMultiBaseAdapter.loadMoreEnd();
+                            mBaseMultiAdapter.loadMoreEnd();
                         } else if (index == 2) {
                             setData();
                         }
@@ -90,7 +90,7 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        mMultiBaseAdapter = new MultiBaseAdapter<Item>(this, mItemList, true) {
+        mBaseMultiAdapter = new BaseMultiAdapter<Item>(this, mItemList, true) {
             @Override
             protected void convert(ViewHolder holder, Item item, int position) {
 
@@ -113,7 +113,7 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
             }
         };
 
-        mMultiBaseAdapter.setOnLoadMoreListener(new BaseAdapter.OnLoadMoreListener() {
+        mBaseMultiAdapter.setOnLoadMoreListener(new BaseAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
                 System.out.println("hhh-------load more-----");
@@ -124,9 +124,9 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
                         int index = new Random().nextInt(3);
 
                         if (index == 0) {
-                            mMultiBaseAdapter.loadMoreError();
+                            mBaseMultiAdapter.loadMoreError();
                         } else if (index == 1) {
-                            mMultiBaseAdapter.loadMoreEnd();
+                            mBaseMultiAdapter.loadMoreEnd();
                         } else if (index == 2) {
                             setData();
                         }
@@ -143,9 +143,9 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
                 int index = new Random().nextInt(3);
 
                 if (index == 0) {
-                    mMultiBaseAdapter.loadError();
+                    mBaseMultiAdapter.loadError();
                 } else if (index == 1) {
-                    mMultiBaseAdapter.loadEnd();
+                    mBaseMultiAdapter.loadEnd();
                 } else if (index == 2) {
                     setData();
                 }
@@ -159,9 +159,9 @@ public class LoadMoreMultiActivity extends AppCompatActivity {
             mItemList.add(item);
         }
 
-        mMultiBaseAdapter.refresh(mItemList);
+        mBaseMultiAdapter.refresh(mItemList);
 
         // 恢复状态
-        mMultiBaseAdapter.loadMoreNormal();
+        mBaseMultiAdapter.loadMoreNormal();
     }
 }

@@ -47,6 +47,7 @@ public class SwipeDeleteLayout extends FrameLayout {
         }
 
         //限定移动范围
+        @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
             if (child == mFrontView) {
                 if (left < -mBackWidth) {
@@ -70,6 +71,7 @@ public class SwipeDeleteLayout extends FrameLayout {
             return left;
         }
 
+        @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             if (changedView == mFrontView) {
                 mBackView.offsetLeftAndRight(dx);

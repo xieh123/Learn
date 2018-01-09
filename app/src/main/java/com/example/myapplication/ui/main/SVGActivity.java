@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.model.SVGModel;
 import com.example.myapplication.svgandroid.CustomSVGParser;
 import com.example.myapplication.svgandroid.SVG;
+import com.jaredrummler.android.widget.AnimatedSvgView;
 
 import java.util.HashMap;
 
@@ -17,11 +19,13 @@ import java.util.HashMap;
  */
 public class SVGActivity extends AppCompatActivity {
 
-
     private ImageView mImageView;
 
-    private SVG svg;
+    //////////////
 
+    private AnimatedSvgView mAnimatedSvgView;
+
+    private int index = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,10 +36,7 @@ public class SVGActivity extends AppCompatActivity {
     }
 
     public void initView() {
-
         mImageView = (ImageView) findViewById(R.id.svg_iv);
-
-
         mImageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         HashMap<String, Integer> colorMap = new HashMap<>();
@@ -45,9 +46,32 @@ public class SVGActivity extends AppCompatActivity {
         SVG svg = CustomSVGParser.getSVGFromResource(getResources(), R.raw.china, colorMap);
         mImageView.setImageDrawable(svg.createPictureDrawable());
 
+        /////////////////////
 
+        mAnimatedSvgView = (AnimatedSvgView) findViewById(R.id.animatedSvgView);
+        mAnimatedSvgView.postDelayed(new Runnable() {
 
+            @Override
+            public void run() {
+                mAnimatedSvgView.start();
+            }
+        }, 500);
+    }
 
+    public void next(View v) {
+        if (++index >= SVGModel.values().length) {
+            index = 0;
+        }
+        setSvg(SVGModel.values()[index]);
+    }
 
+    private void setSvg(SVGModel svg) {
+        mAnimatedSvgView.setGlyphStrings(svg.glyphs);
+        mAnimatedSvgView.setFillColors(svg.colors);
+        mAnimatedSvgView.setViewportSize(svg.width, svg.height);
+        mAnimatedSvgView.setTraceResidueColor(0x32cd0000);
+        mAnimatedSvgView.setTraceColors(svg.colors);
+        mAnimatedSvgView.rebuildGlyphData();
+        mAnimatedSvgView.start();
     }
 }

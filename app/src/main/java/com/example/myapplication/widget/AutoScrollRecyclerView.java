@@ -36,7 +36,7 @@ public class AutoScrollRecyclerView extends RecyclerView {
             AutoScrollRecyclerView recyclerView = mReference.get();
             if (recyclerView != null && recyclerView.isRunning && recyclerView.isNeedToRun) {
                 recyclerView.scrollBy(0, 1);
-                recyclerView.postDelayed(recyclerView.mAutoScrollTask, recyclerView.TIME_AUTO_SCROLL);
+                recyclerView.postDelayed(recyclerView.mAutoScrollTask, AutoScrollRecyclerView.TIME_AUTO_SCROLL);
             }
         }
     }

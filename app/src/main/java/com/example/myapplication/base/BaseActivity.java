@@ -1,5 +1,6 @@
 package com.example.myapplication.base;
 
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.receiver.ForceOfflineReceiver;
 
 import butterknife.ButterKnife;
 
@@ -29,6 +31,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public TextView titleTv;
     public TextView menuTv;
 
+
+    private ForceOfflineReceiver mForceOfflineReceiver;
+
     protected abstract int getLayoutId();
 
     protected abstract void initView();
@@ -46,6 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         ButterKnife.bind(this);
+        ActivityCollector.addActivity(this);
+
 
         initView();
 
@@ -87,4 +94,30 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.myapplication.FORCE_OFFLINE");
+
+        mForceOfflineReceiver = new ForceOfflineReceiver();
+        registerReceiver(mForceOfflineReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mForceOfflineReceiver != null) {
+            unregisterReceiver(mForceOfflineReceiver);
+            mForceOfflineReceiver = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        ActivityCollector.finishActivity(this);
+    }
 }

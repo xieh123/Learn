@@ -1,4 +1,4 @@
-package com.example.myapplication.widget.loadMoreAdapter;
+package com.example.myapplication.widget.loadmoreadapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -193,7 +193,7 @@ public abstract class BaseAdapter2<T> extends RecyclerView.Adapter<RecyclerView.
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == recyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (findLastVisibleItemPosition(layoutManager) + 1 >= getItemCount() - getFooterViewCount()) {
                         scrollToLoadMore();
                     }

@@ -20,7 +20,7 @@ package com.example.myapplication.svgandroid;
    Changes Copyright 2011 Google Inc.
 */
 /**
- * Parses numbers from SVG text. Based on the Batik Number Parser (Apache 2 License).
+ * Parses numbers from SVGModel text. Based on the Batik Number Parser (Apache 2 License).
  *
  * @author Apache Software Foundation, Larva Labs LLC
  */

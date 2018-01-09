@@ -27,9 +27,7 @@ public class PathAnimActivity extends AppCompatActivity {
     }
 
     public void initView() {
-
         mPathAnimView = (PathAnimView) findViewById(R.id.path_anim_pathAnimView);
-
 
         // 还在完善中，工具类简单的SVG可以转path，复杂点的就乱了
         SVGParser svgParser = new SVGParser();
@@ -37,7 +35,7 @@ public class PathAnimActivity extends AppCompatActivity {
         String str = getString(R.string.qianbihua);
 
         try {
-            Path path = svgParser.parsePath(str);
+            Path path = SVGParser.parsePath(str);
             mPathAnimView.setSourcePath(path);
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,7 +44,6 @@ public class PathAnimActivity extends AppCompatActivity {
         mPathAnimView.setInfinite(true);
 
         mPathAnimView.startAnim(10000);
-
     }
 
     public void button(View v) {

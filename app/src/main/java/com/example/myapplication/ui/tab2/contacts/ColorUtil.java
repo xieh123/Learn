@@ -35,6 +35,8 @@ public class ColorUtil {
             case 5:
                 mPaint.setColor(Color.parseColor("#bf9e5a"));
                 break;
+            default:
+                break;
         }
     }
 }

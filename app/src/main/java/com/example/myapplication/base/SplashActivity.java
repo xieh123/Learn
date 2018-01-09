@@ -52,7 +52,6 @@ public class SplashActivity extends AppCompatActivity implements EasyPermissions
             initSplashImage();
 
             startImageDownLoad();
-
         } else {
             EasyPermissions.requestPermissions(this, "", RC_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
         }
@@ -63,7 +62,6 @@ public class SplashActivity extends AppCompatActivity implements EasyPermissions
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
-
 
     @Override
     public boolean shouldShowRequestPermissionRationale(String permission) {

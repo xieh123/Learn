@@ -15,8 +15,9 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.ViewPagerAdapter;
 import com.example.myapplication.model.Item;
+import com.example.myapplication.transform.AlphaAndScalePageTransformer;
 import com.example.myapplication.transform.ImageUtils;
-import com.example.myapplication.utils.StatusBarCompat;
+import com.example.myapplication.util.StatusBarCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,11 @@ public class Test44Fragment extends LazyFragment {
 
             }
         });
+
+
+        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setPageMargin(40);
+        mViewPager.setPageTransformer(true, new AlphaAndScalePageTransformer());
 
     }
 

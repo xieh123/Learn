@@ -7,7 +7,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.ActivityUtils;
+import com.example.myapplication.util.ActivityUtils;
 
 /**
  * Created by xieH on 2017/6/27 0027.

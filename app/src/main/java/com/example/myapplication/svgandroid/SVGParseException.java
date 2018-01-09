@@ -1,7 +1,7 @@
 package com.example.myapplication.svgandroid;
 
 /**
- * Runtime exception thrown when there is a problem parsing an SVG.
+ * Runtime exception thrown when there is a problem parsing an SVGModel.
  *
  * @author Larva Labs, LLC
  */

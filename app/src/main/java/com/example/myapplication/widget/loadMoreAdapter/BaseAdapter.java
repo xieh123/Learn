@@ -1,4 +1,4 @@
-package com.example.myapplication.widget.loadMoreAdapter;
+package com.example.myapplication.widget.loadmoreadapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,18 +16,43 @@ import java.util.List;
  */
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final int TYPE_NORMAL_VIEW = 10001;  // 普通类型 item
-    public static final int TYPE_FOOTER_VIEW = 10002;  // footer 类型 item
-    public static final int TYPE_EMPTY_VIEW = 10003;   // empty view, 即初始化加载时的提示 view
+    /**
+     * 普通类型 item
+     */
+    public static final int TYPE_NORMAL_VIEW = 10001;
+
+    /**
+     * footer 类型 item
+     */
+    public static final int TYPE_FOOTER_VIEW = 10002;
+
+    /**
+     * empty view, 即初始化加载时的提示 view
+     */
+    public static final int TYPE_EMPTY_VIEW = 10003;
 
     protected Context mContext;
     protected List<T> mDatas;
 
-    private boolean isOpenLoadMore;    // 是否开启加载更多
+    /**
+     * 是否开启加载更多
+     */
+    private boolean isOpenLoadMore;
 
+    /**
+     * 是否显示 EmptyLayout
+     */
+    private boolean isShowEmptyLayout = true;
 
-    private EmptyLayout mEmptyLayout;          // EmptyLayout
-    private LoadingFooterLayout mFooterLayout; // FooterLayout
+    /**
+     * EmptyLayout
+     */
+    private EmptyLayout mEmptyLayout;
+
+    /**
+     * FooterLayout
+     */
+    private LoadingFooterLayout mFooterLayout;
 
     private OnLoadMoreListener onLoadMoreListener;
 
@@ -62,7 +87,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public int getItemCount() {
         if (mDatas.isEmpty()) {
-            return 1;
+            return isShowEmptyLayout ? 1 : 0;
         }
         return mDatas.size() + getFooterViewCount();
     }
@@ -91,6 +116,14 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
             return null;
         }
         return mDatas.get(position);
+    }
+
+    public boolean isShowEmptyLayout() {
+        return isShowEmptyLayout;
+    }
+
+    public void setShowEmptyLayout(boolean showEmptyLayout) {
+        isShowEmptyLayout = showEmptyLayout;
     }
 
     protected boolean isNormalItemView(int viewType) {
@@ -188,7 +221,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == recyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (findLastVisibleItemPosition(layoutManager) + 1 >= getItemCount() - getFooterViewCount()) {
                         scrollToLoadMore();
                     }

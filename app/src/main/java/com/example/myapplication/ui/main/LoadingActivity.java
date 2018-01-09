@@ -120,6 +120,27 @@ public class LoadingActivity extends AppCompatActivity {
         return (int) (dpValue * scale + 0.5f);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        System.out.println("b--------onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        System.out.println("b--------onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        System.out.println("b--------onStop");
+    }
+
 
     @Override
     protected void onDestroy() {

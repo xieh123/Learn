@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.example.myapplication.widget.imageDetail.ImageDescriptionView;
+import com.example.myapplication.widget.imagedetail.ImageDescriptionView;
 
 /**
  * Created by xieH on 2017/2/21 0021.

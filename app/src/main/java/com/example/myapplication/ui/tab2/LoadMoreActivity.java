@@ -11,10 +11,10 @@ import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.widget.loadMoreAdapter.BaseAdapter2;
-import com.example.myapplication.widget.loadMoreAdapter.EmptyLayout;
-import com.example.myapplication.widget.loadMoreAdapter.LoadingFooterLayout;
-import com.example.myapplication.widget.loadMoreAdapter.ViewHolder;
+import com.example.myapplication.widget.loadmoreadapter.BaseAdapter2;
+import com.example.myapplication.widget.loadmoreadapter.EmptyLayout;
+import com.example.myapplication.widget.loadmoreadapter.LoadingFooterLayout;
+import com.example.myapplication.widget.loadmoreadapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,7 @@ public class LoadMoreActivity extends AppCompatActivity {
 //        mLoadingFooterLayout.setLoadingView(loadMoreLoadingView);
 //        mBaseAdapter.setFooterLayout(mLoadingFooterLayout);
 
-        ////
+
         mRecyclerView.setAdapter(mBaseAdapter);
 
         ///////////

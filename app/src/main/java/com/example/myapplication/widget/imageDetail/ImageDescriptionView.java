@@ -1,4 +1,4 @@
-package com.example.myapplication.widget.imageDetail;
+package com.example.myapplication.widget.imagedetail;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;

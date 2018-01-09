@@ -17,8 +17,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifencoder.AnimatedGifEncoder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication.R;
-import com.example.myapplication.utils.ImageUtils;
-import com.example.myapplication.utils.gif.GifImageDecoder;
+import com.example.myapplication.util.ImageUtils;
+import com.example.myapplication.util.gif.GifImageDecoder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

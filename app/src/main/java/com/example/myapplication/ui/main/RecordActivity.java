@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.AudioRecordUtils;
+import com.example.myapplication.util.AudioRecordUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -240,7 +240,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         stopAnimator();
 
         amrList.clear();
-        audioTime = 0l;
+        audioTime = 0L;
     }
 
     /**

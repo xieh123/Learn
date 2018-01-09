@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.VideoView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.DensityUtils;
+import com.example.myapplication.util.DensityUtils;
 import com.example.myapplication.widget.VideoSeekBarView;
 
 import java.util.HashMap;

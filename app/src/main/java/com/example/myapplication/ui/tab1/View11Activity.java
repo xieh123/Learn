@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.util.StringUtils;
 
 import java.util.HashMap;
 

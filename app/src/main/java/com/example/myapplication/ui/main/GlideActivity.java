@@ -213,7 +213,6 @@ public class GlideActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .preload();
 
-
     }
 
     public void initAdapter() {
@@ -232,14 +231,13 @@ public class GlideActivity extends AppCompatActivity {
                 Glide.with(GlideActivity.this)
                         .load(item.getUrl())
                         .transform(new ChatTransformation(GlideActivity.this, R.drawable.chat_img_to_bg_mask_normal))
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                   //     .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .into(mImageView);
             }
         };
     }
 
     public void setData() {
-
         for (int i = 0; i < urls.length; i++) {
             Item item = new Item();
 
@@ -314,7 +312,7 @@ public class GlideActivity extends AppCompatActivity {
 
         //RecyclerView的滑动状态
         int state = recyclerView.getScrollState();
-        if (visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == recyclerView.SCROLL_STATE_IDLE) {
+        if (visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == RecyclerView.SCROLL_STATE_IDLE) {
             return true;
         } else {
             return false;

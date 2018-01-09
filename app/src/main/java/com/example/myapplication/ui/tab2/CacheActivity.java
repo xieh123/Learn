@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.utils.CacheManager;
-import com.example.myapplication.utils.MD5Utils;
+import com.example.myapplication.util.CacheManager;
+import com.example.myapplication.util.MD5Utils;
 import com.google.gson.Gson;
 
 /**

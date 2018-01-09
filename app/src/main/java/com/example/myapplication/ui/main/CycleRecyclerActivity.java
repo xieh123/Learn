@@ -131,7 +131,7 @@ public class CycleRecyclerActivity extends AppCompatActivity {
 
         //RecyclerView的滑动状态
         int state = recyclerView.getScrollState();
-        if (visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == recyclerView.SCROLL_STATE_IDLE) {
+        if (visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == RecyclerView.SCROLL_STATE_IDLE) {
             return true;
         } else {
             return false;

@@ -19,7 +19,10 @@ public class ViewActivity extends AppCompatActivity {
 
     private ImageView mLightBeamIv;
 
-    private ObjectAnimator radarScanAnim;   // 扫描动画
+    /**
+     * 扫描动画
+     */
+    private ObjectAnimator radarScanAnim;
 
     private int width;
     private int height;
@@ -39,7 +42,6 @@ public class ViewActivity extends AppCompatActivity {
 
         mImageView = (ImageView) findViewById(R.id.imageView);
     }
-
 
     public void transparentActivity(View v) {
         Intent intent = new Intent(this, TransparentActivity.class);

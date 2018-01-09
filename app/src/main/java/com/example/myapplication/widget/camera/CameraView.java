@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.myapplication.utils.DeviceUtils;
+import com.example.myapplication.util.DeviceUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

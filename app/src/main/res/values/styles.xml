@@ -23,12 +23,16 @@
 
     <style name="ThemeSplash" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:windowBackground">@drawable/welcome_thirdly</item>-->
-        <item name="android:windowBackground">@drawable/splash</item>
+        <!--<item name="android:windowBackground">@drawable/splash</item>-->
 
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--<item name="windowNoTitle">true</item>-->
+
+        <!-- 透明背景 -->
+        <item name="android:windowIsTranslucent">true</item>
+
     </style>
 
     <style name="WinDialog" parent="@android:style/Theme.Dialog">

@@ -126,7 +126,7 @@ public class AnimatorActivity extends AppCompatActivity {
         //定义了下控制颜色变化的长度，这设了100，好展示。
         int decimalPlaces = 100;
 
-        int colors[] = {Color.parseColor("#00aaee"), Color.parseColor("#00eeaa")};
+        int colors[] = new int[]{Color.parseColor("#00aaee"), Color.parseColor("#00eeaa")};
 
         //颜色估值器
         ArgbEvaluator evaluator = new ArgbEvaluator();

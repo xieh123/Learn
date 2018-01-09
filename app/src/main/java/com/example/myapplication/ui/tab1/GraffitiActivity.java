@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.ScreenUtils;
+import com.example.myapplication.util.ScreenUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;

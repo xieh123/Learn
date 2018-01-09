@@ -14,6 +14,7 @@ public class SlideInOutLeftItemAnimator extends BaseItemAnimator {
         super(recyclerView);
     }
 
+    @Override
     protected void animateRemoveImpl(final RecyclerView.ViewHolder holder) {
         final View view = holder.itemView;
         final ViewPropertyAnimatorCompat animation = ViewCompat.animate(view);
@@ -45,6 +46,7 @@ public class SlideInOutLeftItemAnimator extends BaseItemAnimator {
         ViewCompat.setTranslationX(holder.itemView, -mRecyclerView.getLayoutManager().getWidth());
     }
 
+    @Override
     protected void animateAddImpl(final RecyclerView.ViewHolder holder) {
         final View view = holder.itemView;
         final ViewPropertyAnimatorCompat animation = ViewCompat.animate(view);

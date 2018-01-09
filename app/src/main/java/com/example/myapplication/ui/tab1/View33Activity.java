@@ -16,13 +16,16 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.ColorUtils;
-import com.example.myapplication.utils.ImageUtils;
+import com.example.myapplication.util.ColorUtils;
+import com.example.myapplication.util.ImageUtils;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by xieH on 2017/5/17 0017.
@@ -166,7 +169,7 @@ public class View33Activity extends AppCompatActivity {
         final String tempFilePath = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + File.separator + "HHH" + File.separator + "images" + File.separator + "test22" + File.separator;
 
-        new Thread(new Runnable() {
+        Runnable mRunnable1 = new Runnable() {
             @Override
             public void run() {
                 int paddingLeft = 0;
@@ -223,9 +226,9 @@ public class View33Activity extends AppCompatActivity {
                     System.out.println("hh------" + i);
                 }
             }
-        }).start();
+        };
 
-        new Thread(new Runnable() {
+        Runnable mRunnable2 = new Runnable() {
             @Override
             public void run() {
                 int paddingLeft = 0;
@@ -282,7 +285,16 @@ public class View33Activity extends AppCompatActivity {
                     System.out.println("hh------" + i);
                 }
             }
-        }).start();
+        };
+
+        // 构造一个线程池
+        // 最小线程数为2，最大线程数为4，线程池维护线程的空闲时间为3秒
+        ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 4, 3, TimeUnit.MICROSECONDS, new ArrayBlockingQueue<Runnable>(3),
+                new ThreadPoolExecutor.DiscardOldestPolicy());
+
+        threadPool.execute(mRunnable1);
+        threadPool.execute(mRunnable2);
+
     }
 
     public Bitmap bitmapAddImage11(Bitmap bitmap) {

@@ -72,9 +72,9 @@ import javax.xml.parsers.SAXParserFactory;
  */
 
 /**
- * Entry point for parsing SVG files for Android.
+ * Entry point for parsing SVGModel files for Android.
  * Use one of the various static methods for parsing SVGs by resource, asset or input stream.
- * Optionally, a single color can be searched and replaced in the SVG while parsing.
+ * Optionally, a single color can be searched and replaced in the SVGModel while parsing.
  * You can also parse an svg path directly.
  *
  * @author Larva Labs, LLC
@@ -89,10 +89,10 @@ public class CustomSVGParser {
     static final String TAG = "SVGAndroid";
 
     /**
-     * Parse SVG data from an input stream.
+     * Parse SVGModel data from an input stream.
      *
-     * @param svgData the input stream, with SVG XML data in UTF-8 character encoding.
-     * @return the parsed SVG.
+     * @param svgData the input stream, with SVGModel XML data in UTF-8 character encoding.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      */
     public static SVG getSVGFromInputStream(InputStream svgData) throws SVGParseException {
@@ -100,10 +100,10 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from a string.
+     * Parse SVGModel data from a string.
      *
-     * @param svgData the string containing SVG XML data.
-     * @return the parsed SVG.
+     * @param svgData the string containing SVGModel XML data.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      */
     public static SVG getSVGFromString(String svgData) throws SVGParseException {
@@ -111,11 +111,11 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from an Android application resource.
+     * Parse SVGModel data from an Android application resource.
      *
      * @param resources the Android context resources.
-     * @param resId     the ID of the raw resource SVG.
-     * @return the parsed SVG.
+     * @param resId     the ID of the raw resource SVGModel.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      */
     public static SVG getSVGFromResource(Resources resources, int resId) throws SVGParseException {
@@ -123,11 +123,11 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from an Android application asset.
+     * Parse SVGModel data from an Android application asset.
      *
      * @param assetMngr the Android asset manager.
-     * @param svgPath   the path to the SVG file in the application's assets.
-     * @return the parsed SVG.
+     * @param svgPath   the path to the SVGModel file in the application's assets.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      * @throws IOException       if there was a problem reading the file.
      */
@@ -139,12 +139,12 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from an input stream, replacing a single color with another color.
+     * Parse SVGModel data from an input stream, replacing a single color with another color.
      *
-     * @param svgData      the input stream, with SVG XML data in UTF-8 character encoding.
-     * @param searchId     the color in the SVG to replace.
+     * @param svgData      the input stream, with SVGModel XML data in UTF-8 character encoding.
+     * @param searchId     the color in the SVGModel to replace.
      * @param replaceColor the color with which to replace the search color.
-     * @return the parsed SVG.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      */
     public static SVG getSVGFromInputStream(InputStream svgData, HashMap<String, Integer> colorMap) throws SVGParseException {
@@ -152,12 +152,12 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from a string.
+     * Parse SVGModel data from a string.
      *
-     * @param svgData      the string containing SVG XML data.
-     * @param searchId     the color in the SVG to replace.
+     * @param svgData      the string containing SVGModel XML data.
+     * @param searchId     the color in the SVGModel to replace.
      * @param replaceColor the color with which to replace the search color.
-     * @return the parsed SVG.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      */
     public static SVG getSVGFromString(String svgData, HashMap<String, Integer> colorMap) throws SVGParseException {
@@ -165,13 +165,13 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from an Android application resource.
+     * Parse SVGModel data from an Android application resource.
      *
      * @param resources    the Android context
-     * @param resId        the ID of the raw resource SVG.
-     * @param searchId     the color in the SVG to replace.
+     * @param resId        the ID of the raw resource SVGModel.
+     * @param searchId     the color in the SVGModel to replace.
      * @param replaceColor the color with which to replace the search color.
-     * @return the parsed SVG.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      */
     public static SVG getSVGFromResource(Resources resources, int resId, HashMap<String, Integer> colorMap) throws SVGParseException {
@@ -179,13 +179,13 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parse SVG data from an Android application asset.
+     * Parse SVGModel data from an Android application asset.
      *
      * @param assetMngr    the Android asset manager.
-     * @param svgPath      the path to the SVG file in the application's assets.
-     * @param searchId     the color in the SVG to replace.
+     * @param svgPath      the path to the SVGModel file in the application's assets.
+     * @param searchId     the color in the SVGModel to replace.
      * @param replaceColor the color with which to replace the search color.
-     * @return the parsed SVG.
+     * @return the parsed SVGModel.
      * @throws SVGParseException if there is an error while parsing.
      * @throws IOException       if there was a problem reading the file.
      */
@@ -197,17 +197,17 @@ public class CustomSVGParser {
     }
 
     /**
-     * Parses a single SVG path and returns it as a <code>android.graphics.Path</code> object.
+     * Parses a single SVGModel path and returns it as a <code>android.graphics.Path</code> object.
      * An example path is <code>M250,150L150,350L350,350Z</code>, which draws a triangle.
      *
-     * @param pathString the SVG path, see the specification <a href="http://www.w3.org/TR/SVG/paths.html">here</a>.
+     * @param pathString the SVGModel path, see the specification <a href="http://www.w3.org/TR/SVG/paths.html">here</a>.
      */
     public static Path parsePath(String pathString) {
         return doPath(pathString);
     }
 
     private static SVG parse(InputStream in, HashMap<String, Integer> colorMap, boolean whiteMode) throws SVGParseException {
-        // Util.debug("Parsing SVG...");
+        // Util.debug("Parsing SVGModel...");
         SVGHandler svgHandler = null;
         try {
             // long start = System.currentTimeMillis();
@@ -615,7 +615,7 @@ public class CustomSVGParser {
     }
 
     /**
-     * Elliptical arc implementation based on the SVG specification notes
+     * Elliptical arc implementation based on the SVGModel specification notes
      * Adapted from the Batik library (Apache-2 license) by SAU
      */
 
@@ -1651,7 +1651,7 @@ public class CustomSVGParser {
                 pushTransform(atts);
                 text = new SvgText(atts);
             } else if (!hidden) {
-                Log.d(TAG, "UNRECOGNIZED SVG COMMAND: " + localName);
+                Log.d(TAG, "UNRECOGNIZED SVGModel COMMAND: " + localName);
             }
         }
 

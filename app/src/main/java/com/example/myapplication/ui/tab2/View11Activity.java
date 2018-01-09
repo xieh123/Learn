@@ -1,10 +1,12 @@
 package com.example.myapplication.ui.tab2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Message;
@@ -32,7 +34,7 @@ public class View11Activity extends AppCompatActivity {
 
     private BalloonRelativeLayout mBalloonRelativeLayout;
 
-    private int TIME = 100;//这里默认每隔100毫秒添加一个气泡
+    private int TIME = 100;   // 这里默认每隔100毫秒添加一个气泡
     private Handler mHandler = new Handler();
 
     @Override
@@ -73,7 +75,6 @@ public class View11Activity extends AppCompatActivity {
 
         mCircleChartView.setNumbers(numbers);
 
-
         mBalloonRelativeLayout = (BalloonRelativeLayout) findViewById(R.id.balloonRelativeLayout);
 
         mHandler.postDelayed(runnable, TIME);
@@ -91,4 +92,11 @@ public class View11Activity extends AppCompatActivity {
             }
         }
     };
+
+
+    public void newActivity(View v) {
+        Intent intent = new Intent(this, TestActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+    }
 }

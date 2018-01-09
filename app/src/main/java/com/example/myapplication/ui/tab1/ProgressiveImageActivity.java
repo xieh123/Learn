@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.example.myapplication.utils.HttpUrlFetcher;
+import com.example.myapplication.util.HttpUrlFetcher;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -12,7 +12,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.adapter.BaseRecyclerAdapter;
 import com.example.myapplication.adapter.RecyclerHolder;
 import com.example.myapplication.model.Item;
-import com.example.myapplication.utils.RecyclerViewItemDecoration;
+import com.example.myapplication.util.RecyclerViewItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -60,6 +60,13 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="login"
+            android:text="登录"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +126,7 @@
         android:id="@+id/guideView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:HighlightViewStyle="circle"
         app:MaskBlurStyle="solid"
         app:maskColor="#aaa26956"

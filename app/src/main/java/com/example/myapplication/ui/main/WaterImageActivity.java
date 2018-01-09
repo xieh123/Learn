@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.ImageUtils;
+import com.example.myapplication.util.ImageUtils;
 
 /**
  * Created by Administrator on 2016/11/25 0025.

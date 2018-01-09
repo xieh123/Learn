@@ -17,7 +17,7 @@ import com.example.myapplication.adapter.BaseRecyclerAdapter;
 import com.example.myapplication.adapter.RecyclerHolder;
 import com.example.myapplication.model.Item;
 import com.example.myapplication.transform.ImageUtils;
-import com.example.myapplication.utils.DensityUtils;
+import com.example.myapplication.util.DensityUtils;
 import com.example.myapplication.widget.DividerGridItemDecoration;
 import com.example.myapplication.widget.recyclerview.FooterStateUtils;
 import com.example.myapplication.widget.recyclerview.HeaderAndFooterRecyclerViewAdapter;

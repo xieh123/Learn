@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,10 +15,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.utils.SnackbarUtils;
+import com.example.myapplication.listener.LoginListener;
+import com.example.myapplication.util.SnackbarUtils;
 import com.example.myapplication.widget.GuideLayout;
 import com.example.myapplication.widget.RotatableButton;
 import com.example.myapplication.widget.RotatableImageButton;
@@ -49,6 +52,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private RotatableButton mRotatableButton;
     private RotatableImageButton mRotatableImageButton;
 
+    /////////////////////////
+
+    private static LoginListener mLoginListener;
+
+    public static void startActivity(Context context, LoginListener loginListener) {
+        mLoginListener = loginListener;
+
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +70,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         initView();
 
-        initGuideView();
+        //  initGuideView();
 
-        initGuideView11();
+        //  initGuideView11();
     }
 
     public void initView() {
@@ -83,8 +97,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSignInBtn = (Button) findViewById(R.id.sign_in_btn);
         mSignInBtn.setOnClickListener(this);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, accounts);
-        mAccountEt.setAdapter(arrayAdapter);   // 输入至少两个字符才会提示
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, accounts);
+        // 输入至少两个字符才会提示
+        mAccountEt.setAdapter(arrayAdapter);
 
         mAccountEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -162,6 +177,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (TextUtils.isEmpty(password) || !isPasswordValid(password)) {
             mPasswordInputLayout.setError("密码小于6位");
         }
+
+
+        if (isOk(account, password)) {
+            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private final String ACCOUNT = "13169128183";
+    private final String PASSWORD = "123456";
+
+    private boolean isOk(String account, String password) {
+        return account.equals(ACCOUNT) && password.equals(PASSWORD);
+    }
+
+    public void login(View v) {
+        if (mLoginListener != null) {
+            mLoginListener.onLogin();
+            finish();
+        }
     }
 
     /**
@@ -195,6 +232,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     ////////////////////////////////////////
     ////////////////////////////////////////
+
     private GuideLayout mGuide01Layout, mGuide02Layout;
 
     public void initGuideView() {
@@ -230,6 +268,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGuideBtn = (Button) findViewById(R.id.guide_bt);
         mGuide11Btn = (Button) findViewById(R.id.guide11_bt);
 
+        mGuideView.setVisibility(View.VISIBLE);
         mGuideBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

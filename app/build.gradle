@@ -112,6 +112,12 @@ dependencies {
 
     // 蒙版功能引导
     compile 'com.github.yilylong:UserGuideView:v1.0.0'
+
+    // SVG动画
+    compile 'com.jaredrummler:animated-svg-view:1.0.4'
+
+    // 视频/音频缓存框架
+    compile 'com.danikula:videocache:2.7.0'
 }
 
 

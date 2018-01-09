@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.RxBus;
+import com.example.myapplication.util.RxBus;
 
 import rx.Subscription;
 import rx.functions.Action1;

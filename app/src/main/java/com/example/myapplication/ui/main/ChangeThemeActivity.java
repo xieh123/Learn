@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.switchthmeLib.Colorful;
+import com.example.myapplication.util.switchthmelib.Colorful;
 
 /**
  * Created by xieH on 2016/12/23 0023.

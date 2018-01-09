@@ -81,7 +81,7 @@ public class StateTextView extends TextView {
         }
     }
 
-
+    @Override
     public void setBackgroundColor(int mBackgroundColor) {
         this.mBackgroundColor = mBackgroundColor;
         setBgSelector();

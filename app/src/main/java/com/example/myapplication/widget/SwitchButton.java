@@ -235,6 +235,7 @@ public class SwitchButton extends View implements View.OnClickListener {
         animatorSet.start();
     }
 
+    @Override
     public void setSelected(boolean isSelect) {
         if (isSelect) {
             mCurrentState = State.OPEN;

@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Ticket;
-import com.example.myapplication.utils.DensityUtils;
-import com.example.myapplication.utils.ScreenUtils;
+import com.example.myapplication.util.DensityUtils;
+import com.example.myapplication.util.ScreenUtils;
 import com.google.gson.Gson;
 
 import java.util.Locale;

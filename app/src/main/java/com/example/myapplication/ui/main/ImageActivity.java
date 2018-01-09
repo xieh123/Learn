@@ -17,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.myapplication.R;
-import com.example.myapplication.utils.FileUtils;
-import com.example.myapplication.utils.ScreenUtils;
+import com.example.myapplication.util.FileUtils;
+import com.example.myapplication.util.ScreenUtils;
 import com.example.myapplication.widget.sticker.Sticker;
 import com.example.myapplication.widget.sticker.StickerView;
 

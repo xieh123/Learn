@@ -5,12 +5,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.dtr.zxing.activity.CaptureActivity;
+import com.example.myapplication.base.BaseActivity;
+import com.example.myapplication.listener.LoginListener;
 import com.example.myapplication.ui.main.AnimatorActivity;
 import com.example.myapplication.ui.main.CardViewActivity;
 import com.example.myapplication.ui.main.ChangeThemeActivity;
@@ -21,6 +22,7 @@ import com.example.myapplication.ui.main.GlideActivity;
 import com.example.myapplication.ui.main.ImageActivity;
 import com.example.myapplication.ui.main.LoadingActivity;
 import com.example.myapplication.ui.main.LoginActivity;
+import com.example.myapplication.ui.main.OrderDetailsActivity;
 import com.example.myapplication.ui.main.PathAnimActivity;
 import com.example.myapplication.ui.main.QRCodeActivity;
 import com.example.myapplication.ui.main.RecordActivity;
@@ -37,19 +39,28 @@ import com.xieh.imagepicker.config.SelectOptions;
 import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2016/11/24 0024.
+ * Created by xieH on 2016/11/24 0024.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     /**
@@ -189,6 +200,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private boolean isLogin = false;
+
+    public void orderDetails(View v) {
+        if (!isLogin) {
+            LoginActivity.startActivity(this, new LoginListener() {
+                @Override
+                public void onLogin() {
+                    Intent intent = new Intent(MainActivity.this, OrderDetailsActivity.class);
+                    intent.putExtra("orderId", 1234);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            Intent intent = new Intent(this, OrderDetailsActivity.class);
+            startActivity(intent);
+        }
+    }
+
     public void login(View v) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
@@ -226,6 +255,27 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onKeyDown(keyCode, event);
 //    }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        System.out.println("a--------onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        System.out.println("a--------onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        System.out.println("a--------onStop");
+    }
 
     private long mBackPressedTime;
     private Toast mBackToast;
