@@ -130,7 +130,7 @@ public class ImageDescriptionView extends FrameLayout {
                 int dy = mCurrentY - mDownY;
 
                 if (mCurrentY - mDownY < 0 && Math.abs(mCurrentY - mDownY) > FLING_MIN_DISTANCE) {  // 向上滑动
-                    int height = mLayoutParams.height + Math.abs(dy);    // 控件的高度 + 滑动的距离
+                    int height = mScrollView.getHeight() + Math.abs(dy);    // 控件的高度 + 滑动的距离
 
                     if (height >= mViewMaxHeight) {
                         adjustViewHeight(mViewMaxHeight);
@@ -148,6 +148,8 @@ public class ImageDescriptionView extends FrameLayout {
 
                     return true;  // 拦截事件
                 }
+                break;
+            default:
                 break;
         }
 

@@ -41,7 +41,7 @@ public class CircleImageBehavior extends CoordinatorLayout.Behavior<View> {
         }
         if (this.percent == percent || percent > 1) return true;
         this.percent = percent;
-        //设置头像的大小
+        // 设置头像的大小
         ViewCompat.setScaleX(child, percent);
         ViewCompat.setScaleY(child, percent);
 

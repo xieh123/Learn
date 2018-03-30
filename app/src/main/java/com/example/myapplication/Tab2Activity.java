@@ -24,10 +24,14 @@ import com.example.myapplication.ui.tab2.ItemSlideActivity;
 import com.example.myapplication.ui.tab2.LoadMoreActivity;
 import com.example.myapplication.ui.tab2.LoaderViewActivity;
 import com.example.myapplication.ui.tab2.MagnifierActivity;
-import com.example.myapplication.ui.tab2.VideoPlayActivity;
+import com.example.myapplication.ui.tab2.MaterialDesignActivity;
+import com.example.myapplication.ui.tab2.OCRActivity;
+import com.example.myapplication.ui.tab2.ParallaxPictureActivity;
 import com.example.myapplication.ui.tab2.SceneTransitionAnimationActivity;
+import com.example.myapplication.ui.tab2.TestActivity;
 import com.example.myapplication.ui.tab2.TransitionActivity;
 import com.example.myapplication.ui.tab2.VegaScrollActivity;
+import com.example.myapplication.ui.tab2.VideoPlayActivity;
 import com.example.myapplication.ui.tab2.View11Activity;
 import com.example.myapplication.ui.tab2.ViewActivity;
 import com.example.myapplication.ui.tab2.VoiceBroadcastActivity;
@@ -66,6 +70,11 @@ public class Tab2Activity extends BaseActivity {
 
     public void view11(View v) {
         Intent intent = new Intent(this, View11Activity.class);
+        startActivity(intent);
+    }
+
+    public void test(View v) {
+        Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);
     }
 
@@ -181,6 +190,21 @@ public class Tab2Activity extends BaseActivity {
 
     public void voicePlay(View v) {
         Intent intent = new Intent(this, VoicePlayActivity.class);
+        startActivity(intent);
+    }
+
+    public void materialDesign(View v) {
+        Intent intent = new Intent(this, MaterialDesignActivity.class);
+        startActivity(intent);
+    }
+
+    public void ocr(View v) {
+        Intent intent = new Intent(this, OCRActivity.class);
+        startActivity(intent);
+    }
+
+    public void parallaxPicture(View v) {
+        Intent intent = new Intent(this, ParallaxPictureActivity.class);
         startActivity(intent);
     }
 }

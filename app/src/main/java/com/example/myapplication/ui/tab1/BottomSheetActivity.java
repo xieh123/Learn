@@ -16,7 +16,7 @@ import com.example.myapplication.widget.FullSheetDialogFragment;
  */
 public class BottomSheetActivity extends AppCompatActivity {
 
-    BottomSheetBehavior mBehavior;
+    private BottomSheetBehavior mBehavior;
 
     private View mBottomSheetView;
 

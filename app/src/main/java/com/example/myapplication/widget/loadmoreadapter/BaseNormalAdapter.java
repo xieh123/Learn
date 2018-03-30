@@ -33,19 +33,19 @@ public abstract class BaseNormalAdapter<T> extends BaseAdapter<T> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        int viewType = holder.getItemViewType();
+        int viewType = getItemViewType(position);
         if (isNormalItemView(viewType)) {
             convert((ViewHolder) holder, mDatas.get(position), position);
-        }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(v, mDatas.get(position), position);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, mDatas.get(position), position);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override

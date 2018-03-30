@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#ffffff"
+              android:orientation="vertical"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingTop="8dp">
+
+    <EditText
+        android:id="@+id/edit_input"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/edit_bg"
+        android:gravity="top"
+        android:hint="说你想说的..."
+        android:padding="10dp"
+        android:textSize="14sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="\@"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/emoji_smile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@id/at"
+            android:text="表情"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="发表评论"
+            android:textColor="#00bb29"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -47,7 +47,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     public abstract int getLayoutId();
 
-    public abstract void convertView(ViewHolder holder, BaseDialogFragment dialog);
+    public abstract void convertView(DialogViewHolder holder, BaseDialogFragment dialog);
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(layoutId, container, false);
-        convertView(ViewHolder.create(view), this);
+        convertView(DialogViewHolder.create(view), this);
         return view;
     }
 
@@ -173,7 +173,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     public interface ViewConvertListener extends Serializable {
         long serialVersionUID = System.currentTimeMillis();
 
-        void convertView(ViewHolder holder, BaseDialogFragment dialog);
+        void convertView(DialogViewHolder holder, BaseDialogFragment dialog);
     }
 
 

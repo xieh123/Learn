@@ -150,6 +150,15 @@
         <activity android:name=".ui.tab2.BroadcastActivity"/>
         <activity android:name=".ui.tab2.VoiceBroadcastActivity"/>
         <activity android:name=".ui.tab2.VoicePlayActivity"/>
+        <activity android:name=".ui.tab2.MaterialDesignActivity"/>
+        <activity android:name=".ui.tab2.MaterialDesign11Activity"/>
+        <activity android:name=".ui.tab2.OCRActivity"/>
+        <activity android:name=".ui.tab2.ParallaxPictureActivity"/>
+
+        <activity android:name=".ui.tab3.MediaProjectionActivity"/>
+        <activity android:name=".ui.tab3.SampleRecyclerViewActivity"/>
+        <activity android:name=".ui.tab3.CoordinatorActivity"/>
+        <activity android:name=".ui.tab3.Behavior22Activity"/>
 
 
         //////////// 图片选择 ////////////
@@ -168,6 +177,25 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".service.TestService"
+            android:enabled="true"
+            android:exported="true"/>
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.myapplication.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+
     </application>
 
 </manifest>

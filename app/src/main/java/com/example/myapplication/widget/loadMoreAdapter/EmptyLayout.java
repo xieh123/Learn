@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,6 +17,8 @@ import com.example.myapplication.R;
 public class EmptyLayout extends RelativeLayout {
 
     protected State mState = State.Normal;
+
+    private FrameLayout mParentFl;
 
     private View mLoadingView;
     private TextView mLoadingText;
@@ -47,6 +50,8 @@ public class EmptyLayout extends RelativeLayout {
                 ViewGroup.LayoutParams.MATCH_PARENT);
         setLayoutParams(params);
 
+        mParentFl = (FrameLayout) findViewById(R.id.empty_parent_fl);
+
         setState(State.Loading, true);
     }
 
@@ -72,6 +77,8 @@ public class EmptyLayout extends RelativeLayout {
 
         switch (status) {
             case Normal:
+                this.setVisibility(GONE);
+
                 if (mLoadingView != null) {
                     mLoadingView.setVisibility(GONE);
                 }
@@ -86,6 +93,8 @@ public class EmptyLayout extends RelativeLayout {
 
                 break;
             case Loading:
+                this.setVisibility(VISIBLE);
+
                 if (mEndView != null) {
                     mEndView.setVisibility(GONE);
                 }
@@ -107,6 +116,8 @@ public class EmptyLayout extends RelativeLayout {
 
                 break;
             case End:
+                this.setVisibility(VISIBLE);
+
                 if (mLoadingView != null) {
                     mLoadingView.setVisibility(GONE);
                 }
@@ -125,6 +136,8 @@ public class EmptyLayout extends RelativeLayout {
                 mEndView.setVisibility(showView ? VISIBLE : GONE);
                 break;
             case Error:
+                this.setVisibility(VISIBLE);
+
                 if (mLoadingView != null) {
                     mLoadingView.setVisibility(GONE);
                 }
@@ -182,36 +195,40 @@ public class EmptyLayout extends RelativeLayout {
     /**
      * 设置 加载中 View
      *
-     * @param loadingView
+     * @param view
      */
-    public void setLoadingView(View loadingView) {
-        ((ViewGroup) getChildAt(0)).removeView(mLoadingView);  // 先移除旧的View
-        ((ViewGroup) getChildAt(0)).addView(loadingView);      // 再添加新的View
-        this.mLoadingView = loadingView;
+    public void setLoadingView(View view) {
+        mParentFl.addView(view);
+
+        this.mLoadingView = view;
+        // 先隐藏
+        this.mLoadingView.setVisibility(GONE);
     }
 
     /**
      * 设置 加载完成 View
      *
-     * @param endView
+     * @param view
      */
-    public void setEndView(View endView) {
-        ((ViewGroup) getChildAt(0)).removeView(mEndView);  // 先移除旧的View
-        ((ViewGroup) getChildAt(0)).addView(endView);      // 再添加新的View
-        this.mEndView = endView;
-        this.mEndView.setVisibility(GONE);  // 先隐藏
+    public void setEndView(View view) {
+        mParentFl.addView(view);
+
+        this.mEndView = view;
+        // 先隐藏
+        this.mEndView.setVisibility(GONE);
     }
 
     /**
      * 设置 加载失败 View
      *
-     * @param errorView
+     * @param view
      */
-    public void setErrorView(View errorView) {
-        ((ViewGroup) getChildAt(0)).removeView(mErrorView);  // 先移除旧的View
-        ((ViewGroup) getChildAt(0)).addView(errorView);      // 再添加新的View
-        this.mErrorView = errorView;
-        this.mErrorView.setVisibility(GONE);  // 先隐藏
+    public void setErrorView(View view) {
+        mParentFl.addView(view);
+
+        this.mErrorView = view;
+        // 先隐藏
+        this.mErrorView.setVisibility(GONE);
     }
 
     public void setOnReloadListener(OnReloadListener onReloadListener) {

@@ -7,6 +7,13 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+
+        <item name="colorControlNormal">#ff929292</item>
+        <item name="colorControlActivated">#FFCD0000</item>
+
+        <!--android:colorControlNormal    这个属性来设置未选中状态时线条的颜色-->
+        <!--android:colorControlActivated 这个属性来设置选中状态时线条的颜色-->
+
         <!-- 禁止预览 -->
         <!--<item name="android:windowDisablePreview">true</item>-->
 

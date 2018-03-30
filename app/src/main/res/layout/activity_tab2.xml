@@ -49,7 +49,13 @@
                     android:onClick="view11"
                     android:text="View11"
                     android:textAllCaps="false"/>
-
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="test"
+                    android:text="test"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -234,9 +240,31 @@
                     android:onClick="voicePlay"
                     android:text="音乐播放"
                     android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="materialDesign"
+                    android:text="material design"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="ocr"
+                    android:text="图片识别"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="parallaxPicture"
+                    android:text="图片视差滚动列表"
+                    android:textAllCaps="false"/>
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 

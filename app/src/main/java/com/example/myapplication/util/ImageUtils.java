@@ -6,6 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.widget.AppCompatDrawableManager;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
@@ -292,5 +296,27 @@ public class ImageUtils {
     public static int dp2px(Context context, float dp) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);
+    }
+
+    /**
+     * svg VectorDrawable 转 bitmap
+     *
+     * @param context
+     * @param drawableId
+     * @return
+     */
+    public static Bitmap getBitmapFromVectorDrawable(Context context, int drawableId) {
+        Drawable drawable = AppCompatDrawableManager.get().getDrawable(context, drawableId);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            drawable = (DrawableCompat.wrap(drawable)).mutate();
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
     }
 }

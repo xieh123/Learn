@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="title">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_weapon_inc"
+                    android:icon="@drawable/ic_launcher11"
+                    android:title="1111" />
+                <item
+                    android:id="@+id/nav_people_inc"
+                    android:icon="@drawable/ic_launcher11"
+                    android:title="2222" />
+                <item
+                    android:id="@+id/nav_sub_inc"
+                    android:icon="@drawable/ic_launcher11"
+                    android:title="3333" />
+                <item
+                    android:id="@+id/nav_things_inc"
+                    android:icon="@drawable/ic_launcher11"
+                    android:title="4444" />
+            </group>
+        </menu>
+
+    </item>
+
+
+    <item android:title="other_title">
+        <menu>
+            <item
+                android:id="@+id/nav_bottom_dialog"
+                android:icon="@drawable/ic_launcher11"
+                android:title="5555" />
+            <item
+                android:id="@+id/nav_snack_bar"
+                android:icon="@drawable/ic_launcher11"
+                android:title="6666" />
+            <item
+                android:id="@+id/nav_alert_dialog"
+                android:icon="@drawable/ic_launcher11"
+                android:title="7777" />
+        </menu>
+    </item>
+
+</menu>

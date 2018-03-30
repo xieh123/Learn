@@ -50,6 +50,7 @@ public class MyFragment extends LazyFragment {
             mItemList.add(item);
         }
         mIndicatorViewPager.setViewpagerData(mItemList);
+        mIndicatorViewPager.setAutoScroll(true);
     }
 
     @Override

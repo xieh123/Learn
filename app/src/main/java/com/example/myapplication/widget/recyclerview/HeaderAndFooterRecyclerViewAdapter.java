@@ -181,7 +181,7 @@ public class HeaderAndFooterRecyclerViewAdapter extends RecyclerView.Adapter<Rec
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-        //添加代码 需要调用内部adapter 才能收到通知
+        // 添加代码 需要调用内部adapter 才能收到通知
         mInnerAdapter.onViewAttachedToWindow(holder);
 
     }
@@ -189,7 +189,7 @@ public class HeaderAndFooterRecyclerViewAdapter extends RecyclerView.Adapter<Rec
     @Override
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
         super.onViewRecycled(holder);
-        //添加代码 需要调用内部adapter 才能收到通知
+        // 添加代码 需要调用内部adapter 才能收到通知
         mInnerAdapter.onViewRecycled(holder);
     }
 

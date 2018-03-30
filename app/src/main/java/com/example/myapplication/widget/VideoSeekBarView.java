@@ -283,6 +283,8 @@ public class VideoSeekBarView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 break;
+            default:
+                break;
         }
         return super.onTouchEvent(event);
     }

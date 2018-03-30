@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/bottom_weapon_inc"
+            android:icon="@drawable/ic_launcher11"
+            android:title="123" />
+        <item
+            android:id="@+id/bottom_people_inc"
+            android:icon="@drawable/ic_launcher11"
+            android:title="456" />
+        <item
+            android:id="@+id/bottom_sub_inc"
+            android:icon="@drawable/ic_launcher11"
+            android:title="789" />
+        <item
+            android:id="@+id/bottom_things_inc"
+            android:icon="@drawable/ic_launcher11"
+            android:title="hhh" />
+    </group>
+
+</menu>

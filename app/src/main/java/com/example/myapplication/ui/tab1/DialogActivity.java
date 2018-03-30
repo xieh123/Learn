@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.fragment.dialog.BaseDialogFragment;
+import com.example.myapplication.fragment.dialog.DialogViewHolder;
 import com.example.myapplication.fragment.dialog.NiceDialogFragment;
-import com.example.myapplication.fragment.dialog.ViewHolder;
 import com.example.myapplication.util.DialogFragmentHelper;
 import com.example.myapplication.util.IDialogResultListener;
 import com.example.myapplication.widget.CommonDialogFragment;
@@ -206,7 +206,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
                             .setLayoutId(R.layout.dialog_share)
                             .setConvertListener(new BaseDialogFragment.ViewConvertListener() {
                                 @Override
-                                public void convertView(ViewHolder holder, final BaseDialogFragment dialog) {
+                                public void convertView(DialogViewHolder holder, final BaseDialogFragment dialog) {
                                     holder.setOnClickListener(R.id.wechat_tv, new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
@@ -222,10 +222,10 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
                     break;
                 case 1:
                     NiceDialogFragment.init()
-                            .setLayoutId(R.layout.dialog_commit)
+                            .setLayoutId(R.layout.dialog_comment)
                             .setConvertListener(new BaseDialogFragment.ViewConvertListener() {
                                 @Override
-                                public void convertView(ViewHolder holder, final BaseDialogFragment dialog) {
+                                public void convertView(DialogViewHolder holder, final BaseDialogFragment dialog) {
                                     final EditText editText = holder.getView(R.id.edit_input);
                                     editText.post(new Runnable() {
                                         @Override
@@ -245,7 +245,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
                             .setLayoutId(R.layout.dialog_lucky_money)
                             .setConvertListener(new BaseDialogFragment.ViewConvertListener() {
                                 @Override
-                                public void convertView(ViewHolder holder, final BaseDialogFragment dialog) {
+                                public void convertView(DialogViewHolder holder, final BaseDialogFragment dialog) {
                                     holder.setOnClickListener(R.id.close, new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
@@ -272,7 +272,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
                             .setLayoutId(R.layout.dialog_friend_set)
                             .setConvertListener(new BaseDialogFragment.ViewConvertListener() {
                                 @Override
-                                public void convertView(ViewHolder holder, final BaseDialogFragment dialog) {
+                                public void convertView(DialogViewHolder holder, final BaseDialogFragment dialog) {
 
                                 }
                             })
@@ -326,7 +326,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         @Override
-        public void convertView(ViewHolder holder, final BaseDialogFragment dialog) {
+        public void convertView(DialogViewHolder holder, final BaseDialogFragment dialog) {
             if ("1".equals(type)) {
                 holder.setText(R.id.title, "提示");
                 holder.setText(R.id.message, "您已支付成功！");

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.util.StringUtils;
+import com.example.myapplication.util.SpannableStringUtils;
 
 import java.util.HashMap;
 
@@ -65,7 +65,7 @@ public class View11Activity extends AppCompatActivity {
         String content = "看到这样的效果，可能你会不假思索地选择 LinearLayout 容器，同时分配 children 的 weight 属性。不错，这样实现确实很简单。但是，通常界面上还有其他元素，父容器一般使用的是 RelativeLayout ，如果再选择使用一层 LinearLayout 包裹这两个 Button 的话，无疑会额外增加视图层次（View Hierarchy），加大性能渲染压力。其实，大可不必这样做，RelativeLayout 也能让两个 children 水平居中等分宽度。";
 
         String[] keys = new String[]{"LinearLayout", "确实很简单", "无疑会额外增加视图层次", "RelativeLayout"};
-        SpannableStringBuilder builder = StringUtils.matcherTextStyle(content, keys, ContextCompat.getColor(this, R.color.text_select_color));
+        SpannableStringBuilder builder = SpannableStringUtils.matcherTextStyle(content, keys, ContextCompat.getColor(this, R.color.text_select_color));
         mTextView2.setText(builder);
 
 //        view.performClick();  // 自动调用 View 点击事件

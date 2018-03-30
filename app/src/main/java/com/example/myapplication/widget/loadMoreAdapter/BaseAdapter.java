@@ -137,7 +137,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
      * @return
      */
     private boolean isEmptyView(int position) {
-        return (getItemViewType(position) == TYPE_EMPTY_VIEW);
+        return getItemViewType(position) == TYPE_EMPTY_VIEW;
     }
 
 
@@ -264,8 +264,8 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
             if (mFooterLayout.getState() == LoadingFooterLayout.State.Normal) {
                 if (onLoadMoreListener != null) {
                     onLoadMoreListener.onLoadMore();
-                    loadMoreLoading();
                 }
+                loadMoreLoading();
             }
         }
     }

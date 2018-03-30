@@ -67,7 +67,7 @@ public class ViewPagerActivity extends BaseActivity {
         viewPagerAdapter.addFragment(new Test11Fragment(), "test11");
         viewPagerAdapter.addFragment(new Test22Fragment(), "test22");
 
-        viewPager.setOffscreenPageLimit(1);
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(viewPagerAdapter);
 
         viewPager.setPageTransformer(true, new DepthPageTransformer());

@@ -25,7 +25,8 @@ public class DependentBehavior extends CoordinatorLayout.Behavior<View> {
      */
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-        return dependency instanceof TextView; // 返回需要关注的View
+        // 返回需要关注的View
+        return dependency instanceof TextView;
     }
 
     @Override

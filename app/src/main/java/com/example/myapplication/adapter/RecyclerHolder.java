@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * 适配一切RecyclerView.ViewHolder
+ * 适配一切RecyclerView.DialogViewHolder
  */
 public class RecyclerHolder extends RecyclerView.ViewHolder {
     private final SparseArray<View> mViews;

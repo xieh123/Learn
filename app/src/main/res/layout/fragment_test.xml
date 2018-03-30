@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:lineSpacingMultiplier="1.3"
+        android:maxLines="5"
+        android:text="1.2004年的夏季奥运会在哪里举行"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMessage"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.example.myapplication.widget.TextButton
+            android:id="@+id/answer0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/answer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="答案1"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/answer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="答案2"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

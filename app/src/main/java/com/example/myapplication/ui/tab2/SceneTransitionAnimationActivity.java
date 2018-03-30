@@ -41,21 +41,17 @@ public class SceneTransitionAnimationActivity extends AppCompatActivity {
     }
 
     public void next(View v) {
-        List<Pair<View, String>> pairs = new ArrayList<>();
-        pairs.add(new Pair<View, String>(mImageView, "tab_" + 1));
-        pairs.add(new Pair<View, String>(mTextView, "tab_" + 2));
-
-        pairs.add(new Pair<View, String>(mImageView11, "tab_" + 3));
-
         Intent intent = new Intent(this, SecondActivity.class);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            List<Pair<View, String>> pairs = new ArrayList<>();
+            pairs.add(new Pair<View, String>(mImageView, SecondActivity.TAB_1));
+            pairs.add(new Pair<View, String>(mTextView, SecondActivity.TAB_2));
+
+            pairs.add(new Pair<View, String>(mImageView11, SecondActivity.TAB_3));
+
             Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(SceneTransitionAnimationActivity.this, pairs.toArray(new Pair[pairs.size()])).toBundle();
             startActivity(intent, bundle);
-
-//            Pair<View, String> p = new Pair<View, String>(mImageView, "tab_3");
-//            Bundle bundle11 = ActivityOptionsCompat.makeSceneTransitionAnimation(SceneTransitionAnimationActivity.this, p).toBundle();
-
         } else {
             startActivity(intent);
         }

@@ -21,7 +21,7 @@ public class NiceDialogFragment extends BaseDialogFragment {
     }
 
     @Override
-    public void convertView(ViewHolder holder, BaseDialogFragment dialog) {
+    public void convertView(DialogViewHolder holder, BaseDialogFragment dialog) {
         if (convertListener != null) {
             convertListener.convertView(holder, dialog);
         }

@@ -1,7 +1,6 @@
 package com.example.myapplication.ui.tab1;
 
 import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +13,7 @@ import com.example.myapplication.adapter.RecyclerHolder;
 import com.example.myapplication.model.Item;
 import com.willowtreeapps.spruce.Spruce;
 import com.willowtreeapps.spruce.animation.DefaultAnimations;
-import com.willowtreeapps.spruce.sort.DefaultSort;
+import com.willowtreeapps.spruce.sort.LinearSort;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,18 +47,19 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
                 super.onLayoutChildren(recycler, state);
-                // Animate in the visible children
-                spruceAnimator = new Spruce.SpruceBuilder(mRecyclerView)
-                        .sortWith(new DefaultSort(100))
-                        .animateWith(DefaultAnimations.shrinkAnimator(mRecyclerView, 800),
-                                ObjectAnimator.ofFloat(mRecyclerView, "translationX", -mRecyclerView.getWidth(), 0f).setDuration(800))
-                        .start();
-
-//                Animator spruceAnimator = new Spruce.SpruceBuilder(mRecyclerView)
-//                        .sortWith(new LinearSort(/*interObjectDelay=*/100L, /*reversed=*/false, LinearSort.Direction.TOP_TO_BOTTOM))
-//                        .animateWith(DefaultAnimations.shrinkAnimator(mRecyclerView, /*duration=*/800))
+                if (state.getItemCount() > 0) {
+                    // Animate in the visible children
+//                spruceAnimator = new Spruce.SpruceBuilder(mRecyclerView)
+//                        .sortWith(new DefaultSort(100))
+//                        .animateWith(DefaultAnimations.shrinkAnimator(mRecyclerView, 800),
+//                                ObjectAnimator.ofFloat(mRecyclerView, "translationX", -mRecyclerView.getWidth(), 0f).setDuration(800))
 //                        .start();
 
+                    spruceAnimator = new Spruce.SpruceBuilder(mRecyclerView)
+                            .sortWith(new LinearSort(/*interObjectDelay=*/100L, /*reversed=*/false, LinearSort.Direction.TOP_TO_BOTTOM))
+                            .animateWith(DefaultAnimations.shrinkAnimator(mRecyclerView, /*duration=*/800))
+                            .start();
+                }
             }
         };
 
