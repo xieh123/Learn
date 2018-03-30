@@ -79,7 +79,7 @@ public class ImageGalleryActivity extends BaseActivity implements ViewPager.OnPa
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_image_gallery;
+        return R.layout.imagepicker_activity_image_gallery;
     }
 
     @Override

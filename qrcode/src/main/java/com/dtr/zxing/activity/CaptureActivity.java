@@ -86,6 +86,8 @@ public final class CaptureActivity extends BaseActivity implements
     private ImageView scanLine;
     private ImageView mFlash;
 
+    private ImageView mImageIv;
+
     private Rect mCropRect = null;
 
     private boolean isHasSurface = false;
@@ -106,6 +108,8 @@ public final class CaptureActivity extends BaseActivity implements
     public void initView() {
         mScanPreview = (SurfaceView) findViewById(R.id.capture_preview);
         mScanPreview.getHolder().addCallback(this);
+
+        mImageIv = (ImageView) findViewById(R.id.image_iv);
 
         requestCamera();
     }
@@ -141,8 +145,7 @@ public final class CaptureActivity extends BaseActivity implements
             throw new IllegalStateException("No SurfaceHolder provided");
         }
         if (cameraManager.isOpen()) {
-            Log.w(TAG,
-                    "initCamera() while already open -- late SurfaceView callback?");
+            Log.w(TAG, "initCamera() while already open -- late SurfaceView callback?");
             return;
         }
         try {
@@ -150,8 +153,7 @@ public final class CaptureActivity extends BaseActivity implements
             // Creating the handler starts the preview, which can also throw a
             // RuntimeException.
             if (handler == null) {
-                handler = new CaptureActivityHandler(this, cameraManager,
-                        DecodeThread.ALL_MODE);
+                handler = new CaptureActivityHandler(this, cameraManager, DecodeThread.ALL_MODE);
             }
 
             initCrop();
@@ -255,10 +257,9 @@ public final class CaptureActivity extends BaseActivity implements
      * @param v
      */
     public void decode(View v) {
-
         QRCodeDecoder mDecoder = new QRCodeDecoder.Builder().build();
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.qr_image);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.qr_image22);
 
         String urlStr = mDecoder.decode(bitmap);
 
@@ -269,22 +270,22 @@ public final class CaptureActivity extends BaseActivity implements
     }
 
     /**
-     * 生成二维码
+     * 测试生成二维码
      */
-    public void test() {
-
-        String content = "";
+    public void encode(View v) {
+        String content = "HHHHHH";
 
         final Bitmap centerImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
         Bitmap bitmap = new QRCodeEncoder.Builder()
                 .width(200)
                 .height(200)
                 .paddingPx(0)
-                .marginPt(3)
+                .marginPt(1)
                 .centerImage(centerImage)
                 .build()
                 .encode(content);
 
+        mImageIv.setImageBitmap(bitmap);
     }
 
 
@@ -352,7 +353,6 @@ public final class CaptureActivity extends BaseActivity implements
         }
     }
 
-
     /**
      * A valid barcode has been found, so give an indication of success and show
      * the results.
@@ -383,7 +383,6 @@ public final class CaptureActivity extends BaseActivity implements
     }
 
     private void handleText(String text) {
-
         if (StringUtils.isUrl(text)) {
             showUrlOption(text);
         } else {
@@ -407,7 +406,7 @@ public final class CaptureActivity extends BaseActivity implements
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
+              //  finish();
             }
         }).show();
     }

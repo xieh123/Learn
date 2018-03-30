@@ -39,7 +39,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_gallery, container, false);
+        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.imagepicker_item_gallery, container, false);
         ImagePreviewView previewView = (ImagePreviewView) view.findViewById(R.id.item_preview_iv);
 
         Glide.with(mContext)

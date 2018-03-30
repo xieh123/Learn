@@ -31,7 +31,7 @@ public class CropActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_crop;
+        return R.layout.imagepicker_activity_crop;
     }
 
     @Override

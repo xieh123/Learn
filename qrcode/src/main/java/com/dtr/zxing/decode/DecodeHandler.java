@@ -32,7 +32,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
-import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.common.GlobalHistogramBinarizer;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
@@ -90,10 +90,12 @@ public class DecodeHandler extends Handler {
         Result rawResult = null;
         PlanarYUVLuminanceSource source = buildLuminanceSource(rotatedData, size.width, size.height);
         if (source != null) {
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            BinaryBitmap bitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
             try {
                 rawResult = multiFormatReader.decodeWithState(bitmap);
             } catch (ReaderException re) {
+                re.printStackTrace();
                 // continue
             } finally {
                 multiFormatReader.reset();

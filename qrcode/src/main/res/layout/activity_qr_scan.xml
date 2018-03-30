@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="vertical">
 
     <SurfaceView
         android:id="@+id/capture_preview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
     <RelativeLayout
         android:id="@+id/capture_container"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_alignParentTop="true"
-            android:background="@drawable/qr_scan_mask" />
+            android:background="@drawable/qr_scan_mask"/>
 
         <RelativeLayout
             android:id="@+id/capture_crop_view"
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/qr_scan_line" />
+                android:src="@drawable/qr_scan_line"/>
         </RelativeLayout>
 
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@id/capture_crop_view"
-            android:background="@drawable/qr_scan_mask" />
+            android:background="@drawable/qr_scan_mask"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_marginTop="30dp"
             android:text="将二维码/条码放入框内，即可自动扫描"
             android:textColor="@android:color/white"
-            android:textSize="13sp" />
+            android:textSize="13sp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@id/capture_mask_top"
             android:layout_toLeftOf="@id/capture_crop_view"
-            android:background="@drawable/qr_scan_mask" />
+            android:background="@drawable/qr_scan_mask"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/capture_mask_top"
             android:layout_toRightOf="@id/capture_crop_view"
-            android:background="@drawable/qr_scan_mask" />
+            android:background="@drawable/qr_scan_mask"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -86,6 +86,7 @@
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
         android:gravity="center"
+        android:orientation="horizontal"
         android:padding="10dip">
 
         <ImageView
@@ -95,14 +96,30 @@
             android:layout_gravity="center"
             android:background="@drawable/flash_default"
             android:clickable="true"
-            android:tag="1" />
+            android:tag="1"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:onClick="decode"
-            android:text="解析图片" />
+            android:text="解析图片"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:onClick="encode"
+            android:text="生成二维码"/>
     </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/image_iv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"/>
 
 </RelativeLayout>

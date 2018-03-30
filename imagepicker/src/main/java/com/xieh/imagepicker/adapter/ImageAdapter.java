@@ -38,10 +38,10 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         RecyclerView.ViewHolder holder = null;
 
         if (viewType == 0) {
-            view = View.inflate(mContext, R.layout.item_recycler_camera, null);
+            view = View.inflate(mContext, R.layout.imagepicker_item_recycler_camera, null);
             holder = new CamViewHolder(view);
         } else {
-            view = View.inflate(mContext, R.layout.item_recycler_image, null);
+            view = View.inflate(mContext, R.layout.imagepicker_item_recycler_image, null);
             holder = new ImageViewHolder(view);
         }
 

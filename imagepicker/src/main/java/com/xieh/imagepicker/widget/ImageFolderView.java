@@ -49,7 +49,7 @@ public class ImageFolderView extends FrameLayout implements View.OnClickListener
     }
 
     public void init() {
-        inflate(mContext, R.layout.popup_window_folder, this);
+        inflate(mContext, R.layout.imagepicker_popup_window_folder, this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.popup_folder_rv);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -61,7 +61,7 @@ public class ImageFolderView extends FrameLayout implements View.OnClickListener
     }
 
     public void initAdapter() {
-        mBaseRecyclerAdapter = new BaseRecyclerAdapter<ImageFolder>(mRecyclerView, mImageFolderList, R.layout.item_recycler_folder) {
+        mBaseRecyclerAdapter = new BaseRecyclerAdapter<ImageFolder>(mRecyclerView, mImageFolderList, R.layout.imagepicker_item_recycler_folder) {
             @Override
             public void convert(RecyclerHolder holder, ImageFolder item, int position, boolean isScrolling) {
 

@@ -78,7 +78,7 @@ public class SelectImageActivity extends BaseActivity implements EasyPermissions
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_select_image;
+        return R.layout.imagepicker_activity_select_image;
     }
 
     @Override
@@ -167,6 +167,7 @@ public class SelectImageActivity extends BaseActivity implements EasyPermissions
             finish();
         } else if (v.getId() == R.id.toolbar_done_tv) {
             mOption.getCallback().doSelected(Util.toArrayList(mSelectedImages));
+            SelectImageActivity.this.finish();
         } else if (v.getId() == R.id.select_image_folder_ll) {
             showPopupFolderList();
         } else if (v.getId() == R.id.select_image_preview_tv) {
@@ -289,20 +290,26 @@ public class SelectImageActivity extends BaseActivity implements EasyPermissions
         if (resultCode == AppCompatActivity.RESULT_OK) {
             switch (requestCode) {
                 case 0x03: // 拍照
-                    if (mCamImageName == null) return;
+                    if (mCamImageName == null) {
+                        return;
+                    }
                     // 拍照完成通知系统添加照片
                     Uri localUri = Uri.fromFile(new File(Util.getCameraPath() + mCamImageName));
                     Intent localIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, localUri);
                     sendBroadcast(localIntent);
                     break;
                 case 0x04: // 裁剪
-                    if (data == null) return;
+                    if (data == null) {
+                        return;
+                    }
 
                     ArrayList<String> mImagePathList = new ArrayList<>();
                     mImagePathList.add(data.getStringExtra("crop_path"));
 
                     mOption.getCallback().doSelected(mImagePathList);
                     finish();
+                    break;
+                default:
                     break;
             }
         }
