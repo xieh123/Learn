@@ -55,6 +55,10 @@ public class VoiceUtils {
             mMediaPlayer = new MediaPlayer();
         }
 
+        if (mMediaPlayer.isPlaying()) {
+            return;
+        }
+
         // 播放完成触发此事件
         mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -142,7 +146,7 @@ public class VoiceUtils {
             }
 
             mMediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

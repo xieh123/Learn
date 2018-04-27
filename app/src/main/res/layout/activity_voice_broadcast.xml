@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:padding="20dp">
 
     <EditText
         android:id="@+id/editText"
@@ -23,6 +24,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="format"
             android:textAllCaps="false"/>
 
@@ -41,7 +43,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="语音播报金额"
         android:textAllCaps="false"/>
+
+
+    <EditText
+        android:id="@+id/phone_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="手机号自动加空格"
+        android:inputType="phone"/>
+
+    <TextView
+        android:id="@+id/time11_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFCD0000"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/time22_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFCD0000"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/time33_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFCD0000"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/time44_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFCD0000"
+        android:textSize="16sp"/>
 
 </LinearLayout>

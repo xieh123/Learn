@@ -27,5 +27,14 @@ public class Tab4Activity extends AppCompatActivity {
 
         mHandler.sendEmptyMessage(1);
 
+
+        initView();
+    }
+
+
+    private void initView(){
+
+
+
     }
 }

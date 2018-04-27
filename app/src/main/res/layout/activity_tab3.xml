@@ -38,6 +38,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:onClick="showNotification11"
+                    android:text="显示通知11"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:onClick="sampleRecyclerView"
                     android:text="列表信息预览"
                     android:textAllCaps="false"/>
@@ -56,6 +64,22 @@
                     android:layout_marginTop="5dp"
                     android:onClick="behavior"
                     android:text="behavior"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="view"
+                    android:text="view"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="bottomSheetDialog"
+                    android:text="BottomSheetDialog"
                     android:textAllCaps="false"/>
             </LinearLayout>
 

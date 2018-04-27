@@ -49,16 +49,19 @@
                 android:singleLine="true"/>
         </android.support.design.widget.TextInputLayout>
 
-        <Button
+        <com.example.myapplication.widget.StateButton
             android:id="@+id/sign_in_btn"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="#4876FF"
+            android:enabled="false"
             android:text="登录"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:normalTextColor="#FFFFFF"
+            app:unableTextColor="#000000"
+            app:normalBackgroundColor="#4876FF"
+            app:unableBackgroundColor="#D5D6D6"/>
 
         <Button
             android:layout_width="match_parent"

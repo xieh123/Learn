@@ -230,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:onClick="voiceBroadcast"
-                    android:text="语音播报"
+                    android:text="语音播报 + 格式化时间"
                     android:textAllCaps="false"/>
 
                 <Button

@@ -213,6 +213,34 @@ public class GlideActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .preload();
 
+
+
+//        ImageView img = (ImageView) findViewById(R.id.iv_main);
+//
+//        final ObjectAnimator anim = ObjectAnimator.ofInt(img, "ImageLevel", 0, 10000);
+//        anim.setDuration(800);
+//        anim.setRepeatCount(ObjectAnimator.INFINITE);
+//        anim.start();
+//
+//        Glide.with(this)
+//                .load(path)
+//                .placeholder(R.drawable.rotate_pro)
+//                .crossFade()
+//                .listener(new RequestListener<String, GlideDrawable>() {
+//                    @Override
+//                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                        anim.cancel();
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                        anim.cancel();
+//                        return false;
+//                    }
+//                })
+//                .into(img);
+
     }
 
     public void initAdapter() {

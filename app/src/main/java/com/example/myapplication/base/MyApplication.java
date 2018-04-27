@@ -20,6 +20,8 @@ public class MyApplication extends Application {
 
         instance = this;
 
+
+
     }
 
     public static MyApplication getInstance() {

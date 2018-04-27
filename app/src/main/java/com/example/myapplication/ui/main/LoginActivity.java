@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.text.Editable;
@@ -109,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                adjustSignInBtnState();
+
             }
 
             @Override
@@ -128,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                adjustSignInBtnState();
+
             }
 
             @Override
@@ -138,21 +137,46 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
+
+        new monitorEditTexts().setMonitorEditTexts(mSignInBtn, mAccountEt, mPasswordEt);
     }
 
-    /**
-     * 动态监测调整登录按钮状态
-     */
-    public void adjustSignInBtnState() {
-        account = mAccountEt.getText().toString();
-        password = mPasswordEt.getText().toString();
 
-        if (account.equals("") || password.equals("")) {
-            mSignInBtn.setClickable(false);
-            mSignInBtn.setTextColor(ContextCompat.getColor(this, R.color.gray));
-        } else {
-            mSignInBtn.setClickable(true);
-            mSignInBtn.setTextColor(ContextCompat.getColor(this, R.color.color_white));
+    public class monitorEditTexts implements TextWatcher {
+
+        private Button mButton;
+        private EditText[] mEditTexts;
+
+        public void setMonitorEditTexts(Button button, EditText... editTexts) {
+            this.mButton = button;
+            this.mEditTexts = editTexts;
+
+            for (int i = 0; i < editTexts.length; i++) {
+                if (editTexts[i] != null) {
+                    editTexts[i].addTextChangedListener(this);
+                }
+            }
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            for (int i = 0; i < mEditTexts.length; i++) {
+                if (mEditTexts[i].length() == 0) {
+                    mButton.setEnabled(false);
+                    break;
+                } else {
+                    mButton.setEnabled(true);
+                }
+            }
         }
     }
 
@@ -167,8 +191,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-//        account = mAccountEt.getText().toString();
-//        password = mPasswordEt.getText().toString();
+        account = mAccountEt.getText().toString();
+        password = mPasswordEt.getText().toString();
 
         if (TextUtils.isEmpty(account) || !isAccountValid(account)) {
             mAccountInputLayout.setError("无效手机号");
