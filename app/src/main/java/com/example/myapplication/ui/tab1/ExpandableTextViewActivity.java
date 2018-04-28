@@ -27,11 +27,10 @@ public class ExpandableTextViewActivity extends AppCompatActivity {
 
     public void initView() {
         ExpandableTextView etvLeft = (ExpandableTextView) findViewById(R.id.etv_left);
-        ExpandableTextView etvpRight = (ExpandableTextView) findViewById(R.id.etv_right);
+        ExpandableTextView etvRight = (ExpandableTextView) findViewById(R.id.etv_right);
 
         etvLeft.setText(getString(R.string.test_content));
-        etvpRight.setText(getString(R.string.test_content));
-
+        etvRight.setText(getString(R.string.test_content));
 
         mContentTv = (TextView) findViewById(R.id.content_tv);
         mExpandTv = (TextView) findViewById(R.id.expand_tv);
